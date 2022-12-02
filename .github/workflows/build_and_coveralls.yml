@@ -38,6 +38,7 @@ jobs:
         with:
           package-name: kickWarehouseSim
           target-ros2-distro: foxy
+          skip-tests: true
       
       # Install some system pacakges
       - name: Install packages
