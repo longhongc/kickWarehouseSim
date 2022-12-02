@@ -31,7 +31,13 @@ jobs:
     
     steps:
       # We want to use GitHub CI checkout version 3 for checking out the branch
-      - uses: actions/checkout@v3
+      - uses: ros-tooling/setup-ros@v0.3
+        with:
+          required-ros-distributions: foxy
+      - uses: ros-tooling/action-ros-ci@v0.2
+        with:
+          package-name: kickWarehouseSim
+          target-ros2-distro: foxy
       
       # Install some system pacakges
       - name: Install packages
