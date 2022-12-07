@@ -16,7 +16,7 @@ def generate_launch_description():
   pkg_share = FindPackageShare(package='robot_model').find('robot_model')
   robot_file_name = 'office_bot_v5.urdf'
   robot_file_path = os.path.join(pkg_share, 'models', robot_file_name)
- 
+
   default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config_with_model.rviz')
 
   ekf_file_name = 'ekf_test.yaml'
@@ -62,16 +62,7 @@ def generate_launch_description():
     description='Whether to use robot localization package')
 
   # Specify the actions
-
-  # Launch RViz
-  start_rviz_cmd = Node(
-    condition=IfCondition(use_rviz),
-    package='rviz2',
-    executable='rviz2',
-    name='rviz2',
-    output='screen',
-    arguments=['-d', rviz_config_file])
-
+  
   # Subscribe to the joint states of the robot, and publish the 3D pose of each link.
   start_robot_state_publisher_cmd = Node(
     condition=IfCondition(use_robot_state_pub),
@@ -89,6 +80,11 @@ def generate_launch_description():
     output='screen',
     parameters=[ekf_params_path],
     condition=IfCondition(use_robot_localization))
+
+  start_rviz_cmd = IncludeLaunchDescription(
+    PythonLaunchDescriptionSource(os.path.join(pkg_share, 'launch', 'rviz2.launch.py')),
+    condition=IfCondition(use_rviz),
+    launch_arguments={'rviz_config_file': rviz_config_file}.items())
 
   # include slam_toolbox
   #slam_toolbox_launch = IncludeLaunchDescription(
@@ -118,9 +114,9 @@ def generate_launch_description():
   ld.add_action(declare_use_robot_localization_cmd)
 
   # Add any actions
-  ld.add_action(start_rviz_cmd)
   ld.add_action(start_robot_state_publisher_cmd)
   ld.add_action(start_ekf_cmd)
+  ld.add_action(start_rviz_cmd)
   #ld.add_action(slam_toolbox_launch)
   #ld.add_action(nav2_launch)
 
