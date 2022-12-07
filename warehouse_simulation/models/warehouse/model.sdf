@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<sdf version="1.6">
+  <model name="warehouse">
+    <include>
+      <uri>model://warehouse_ground</uri>
+      <static>true</static>
+    </include>
+
+    <!-- left wall -->
+    <include>
+      <!-- warehouse wall model path -->
+      <uri>model://warehouse_wall</uri>
+      <!-- Set the location where we want to spawn the model -->
+      <pose>-10 0 0 0 0 1.57</pose>
+      <name>left_wall</name>
+      <static>true</static>
+    </include>
+
+    <!-- right wall -->
+    <include>
+      <uri>model://warehouse_wall</uri>
+      <pose>10 0 0 0 0 1.57</pose>
+      <name>right_wall</name>
+      <static>true</static>
+    </include>
+
+    <!-- bottom wall -->
+    <include>
+      <uri>model://warehouse_wall</uri>
+      <pose>0 -10 0 0 0 0</pose>
+      <name>bottom_wall</name>
+      <static>true</static>
+    </include>
+
+    <!-- top wall -->
+    <include>
+      <uri>model://warehouse_wall</uri>
+      <pose>0 10 0 0 0 0</pose>
+      <name>top_wall</name>
+      <static>true</static>
+    </include>
+  </model>
+</sdf>

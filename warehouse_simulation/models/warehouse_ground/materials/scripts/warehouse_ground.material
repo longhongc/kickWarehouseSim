@@ -1,0 +1,16 @@
+material warehouse_ground
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture warehouse_ground.png
+				filtering anistropic
+				max_anisotropy 16
+				scale 1 1
+			}
+		}
+	}
+}
