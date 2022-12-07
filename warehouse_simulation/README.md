@@ -1,5 +1,5 @@
 # Warehouse Simulation 
-This package contains resources for warehouse simulation. 
+This package contains resources for warehouse simulation.   
 It includes the models, world files, and simulation nodes.
 
 ## Run
