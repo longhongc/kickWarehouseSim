@@ -293,10 +293,32 @@
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -305,16 +327,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-6.15261 6.42319 0 0 -0 0</pose>
+      <pose>-6.23388 5.87972 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_0'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -323,16 +367,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.89128 6.32819 0 0 -0 0</pose>
+      <pose>-6.25061 3.03623 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_1'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -341,16 +407,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-6.0987 4.77841 0 0 -0 0</pose>
+      <pose>-3.88392 5.87367 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_2'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -359,16 +447,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.81698 4.83503 0 0 -0 0</pose>
+      <pose>-3.937 2.90525 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_3'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -377,16 +487,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-5.95302 3.18146 0 0 -0 0</pose>
+      <pose>-6.0635 0.417475 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_4'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -395,16 +527,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.70993 3.16569 0 0 -0 0</pose>
+      <pose>-3.85216 -0.057132 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_5'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -413,16 +567,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-6.00265 -0.091605 0 0 -0 0</pose>
+      <pose>-6.51681 -4.2718 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_6'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -431,16 +607,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.78341 -0.06972 0 0 -0 0</pose>
+      <pose>-4.14269 -4.46445 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_7'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -449,16 +647,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-5.96265 -1.89598 0 0 -0 0</pose>
+      <pose>-6.56789 -7.08916 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_8'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -467,16 +687,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.75235 -1.85554 0 0 -0 0</pose>
+      <pose>-4.36099 -7.20548 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_9'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -485,16 +727,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-6.04732 -4.27996 0 0 -0 0</pose>
+      <pose>0.044049 6.04643 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_10'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -503,16 +767,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-5.94552 -5.7962 0 0 -0 0</pose>
+      <pose>0.090828 3.14876 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_11'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -521,16 +807,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-5.92851 -7.27726 0 0 -0 0</pose>
+      <pose>2.42227 5.90071 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_12'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -539,16 +847,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.7587 -4.32053 0 0 -0 0</pose>
+      <pose>4.7895 5.68187 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_13'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -557,16 +887,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.62154 -6.06091 0 0 -0 0</pose>
+      <pose>0.092209 -0.995954 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_14'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -575,34 +927,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.63425 -7.69536 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_15'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-3.36522 -4.9033 0 0 -0 0</pose>
+      <pose>2.4057 -1.32803 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_16'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -611,16 +967,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-3.12983 -6.5229 0 0 -0 0</pose>
+      <pose>2.43865 -4.22698 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_17'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -629,16 +1007,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-0.812263 -3.35131 0 0 -0 0</pose>
+      <pose>4.83609 -4.11251 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_18'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -647,34 +1047,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-0.970891 -1.82206 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_19'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-1.17841 -0.243182 0 0 -0 0</pose>
+      <pose>0.107354 -6.75699 0 0 -0 0</pose>
     </model>
     <model name='box_pallets_3_20'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -683,16 +1087,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.408074 -1.75893 0 0 -0 0</pose>
+      <pose>6.69038 2.81641 0 0 -0 0</pose>
     </model>
-    <model name='box_pallets_3_21'>
+    <model name='box_pallets_3_15'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -701,16 +1127,38 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.112253 -0.19838 0 0 -0 0</pose>
+      <pose>2.40368 -7.11694 0 0 -0 0</pose>
     </model>
-    <model name='box_pallets_3_22'>
+    <model name='box_pallets_3_19'>
       <static>1</static>
       <link name='link'>
         <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2.2 2.8 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
         <visual name='visual'>
+          <pose>1.35 -1 0 0 0 -0.1</pose>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
+              <scale>0.02 0.02 0.02</scale>
               <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
             </mesh>
           </geometry>
@@ -719,1340 +1167,228 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.581179 -3.42018 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_23'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-1.36962 1.38699 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_24'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0.121445 1.5125 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_25'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-1.76132 6.52237 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_26'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.437518 6.52183 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_27'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-1.68345 4.83764 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_28'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.329547 4.80892 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_29'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.580547 -6.73367 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_30'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.407197 -8.21009 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_31'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>1.06263 -6.72116 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_32'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0.93506 -8.23079 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_33'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>2.47424 -6.73263 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_34'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>2.40219 -8.2904 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_35'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>3.89927 -6.65807 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_36'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>3.90107 -8.11968 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_37'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>5.58386 -6.66281 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_38'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>5.47275 -8.2586 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_39'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>7.20157 -6.54046 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_40'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>7.04839 -8.24653 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_41'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>2.79153 4.16965 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_42'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>4.27104 4.11388 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_43'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>2.82455 2.17179 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_44'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>4.29045 2.19016 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_45'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>2.83598 0.262838 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_46'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>4.22047 0.528726 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_47'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>2.93072 -1.3112 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_48'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>4.20532 -1.0451 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_49'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>2.99733 -2.86535 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_50'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>4.22609 -2.65152 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_51'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>3.55528 7.21766 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_52'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>4.88931 7.28805 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_53'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>7.18308 3.09186 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_54'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>8.48741 3.04479 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_55'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>7.3039 1.41451 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_56'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>6.28497 7.2427 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_57'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>7.66254 7.1674 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_58'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>8.72182 1.26433 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_59'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>7.33351 -0.159258 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_60'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>6.92611 -3.90742 0 0 -0 0</pose>
-    </model>
-    <model name='box_pallets_3_61'>
-      <static>1</static>
-      <link name='link'>
-        <pose>0 0 0 0 -0 0</pose>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://box_pallets_3/meshes/box_pallet.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>8.34721 -3.86507 0 0 -0 0</pose>
+      <pose>6.9545 -1.72594 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>212 843000000</sim_time>
-      <real_time>418 862091052</real_time>
-      <wall_time>1670372117 463793386</wall_time>
-      <iterations>212843</iterations>
+      <sim_time>438 29000000</sim_time>
+      <real_time>809 120143079</real_time>
+      <wall_time>1670381136 108389636</wall_time>
+      <iterations>438029</iterations>
       <model name='box_pallets_3'>
-        <pose>-6.15261 6.42319 0 0 -0 0</pose>
+        <pose>-6.23388 6.63202 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-6.15261 6.42319 0 0 -0 0</pose>
+          <pose>-6.23388 6.63202 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_0'>
-        <pose>-4.89128 6.32819 0 0 -0 0</pose>
+        <pose>-6.25061 3.69498 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.89128 6.32819 0 0 -0 0</pose>
+          <pose>-6.25061 3.69498 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_1'>
-        <pose>-6.0987 4.77841 0 0 -0 0</pose>
+        <pose>-3.88392 6.4501 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-6.0987 4.77841 0 0 -0 0</pose>
+          <pose>-3.88392 6.4501 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_10'>
-        <pose>-5.94876 -6.24632 0 0 -0 0</pose>
+        <pose>0.090828 3.14876 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-5.94876 -6.24632 0 0 -0 0</pose>
+          <pose>0.090828 3.14876 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_11'>
-        <pose>-5.92851 -7.77802 0 0 -0 0</pose>
+        <pose>2.42227 5.90071 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-5.92851 -7.77802 0 0 -0 0</pose>
+          <pose>2.42227 5.90071 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_12'>
-        <pose>-4.7587 -4.65103 0 0 -0 0</pose>
+        <pose>6.70751 6.0749 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.7587 -4.65103 0 0 -0 0</pose>
+          <pose>6.70751 6.0749 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_13'>
-        <pose>-4.62154 -6.2587 0 0 -0 0</pose>
+        <pose>0.092209 -0.995954 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.62154 -6.2587 0 0 -0 0</pose>
+          <pose>0.092209 -0.995954 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_14'>
-        <pose>-4.63425 -7.90123 0 0 -0 0</pose>
+        <pose>2.4057 -1.32803 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.63425 -7.90123 0 0 -0 0</pose>
+          <pose>2.4057 -1.32803 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_15'>
-        <pose>-3.36522 -4.9033 0 0 -0 0</pose>
+        <pose>2.40368 -7.11694 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-3.36522 -4.9033 0 0 -0 0</pose>
+          <pose>2.40368 -7.11694 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_16'>
-        <pose>-3.12983 -6.5229 0 0 -0 0</pose>
+        <pose>2.43865 -4.22698 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-3.12983 -6.5229 0 0 -0 0</pose>
+          <pose>2.43865 -4.22698 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_17'>
-        <pose>-0.812263 -3.35131 0 0 -0 0</pose>
+        <pose>4.83609 -4.11251 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-0.812263 -3.35131 0 0 -0 0</pose>
+          <pose>4.83609 -4.11251 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_18'>
-        <pose>-0.970891 -1.82206 0 0 -0 0</pose>
+        <pose>0.107354 -6.75699 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-0.970891 -1.82206 0 0 -0 0</pose>
+          <pose>0.107354 -6.75699 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_19'>
-        <pose>-1.17841 -0.243182 0 0 -0 0</pose>
+        <pose>6.9545 -1.72594 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-1.17841 -0.243182 0 0 -0 0</pose>
+          <pose>6.9545 -1.72594 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_2'>
-        <pose>-4.81698 4.83503 0 0 -0 0</pose>
+        <pose>-3.937 3.63668 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.81698 4.83503 0 0 -0 0</pose>
+          <pose>-3.937 3.63668 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_20'>
-        <pose>0.408074 -1.75893 0 0 -0 0</pose>
+        <pose>6.69038 3.26327 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0.408074 -1.75893 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_21'>
-        <pose>0.112253 -0.19838 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0.112253 -0.19838 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_22'>
-        <pose>0.581179 -3.42018 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0.581179 -3.42018 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_23'>
-        <pose>-1.36962 1.38699 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-1.36962 1.38699 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_24'>
-        <pose>0.121445 1.5125 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0.121445 1.5125 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_25'>
-        <pose>-1.76132 6.52237 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-1.76132 6.52237 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_26'>
-        <pose>-0.437518 6.52183 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.437518 6.52183 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_27'>
-        <pose>-1.68345 4.83764 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-1.68345 4.83764 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_28'>
-        <pose>-0.329547 4.80892 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.329547 4.80892 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_29'>
-        <pose>-0.580547 -6.73367 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.580547 -6.73367 0 0 -0 0</pose>
+          <pose>6.69038 3.26327 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_3'>
-        <pose>-5.95302 3.18146 0 0 -0 0</pose>
+        <pose>-6.0635 0.8243 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-5.95302 3.18146 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_30'>
-        <pose>-0.407197 -8.21009 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.407197 -8.21009 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_31'>
-        <pose>1.06263 -6.72116 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>1.06263 -6.72116 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_32'>
-        <pose>0.93506 -8.23079 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0.93506 -8.23079 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_33'>
-        <pose>2.47424 -6.73263 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2.47424 -6.73263 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_34'>
-        <pose>2.40219 -8.2904 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2.40219 -8.2904 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_35'>
-        <pose>3.89927 -6.65807 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>3.89927 -6.65807 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_36'>
-        <pose>3.90107 -8.11968 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>3.90107 -8.11968 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_37'>
-        <pose>5.58386 -6.66281 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>5.58386 -6.66281 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_38'>
-        <pose>5.47275 -8.2586 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>5.47275 -8.2586 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_39'>
-        <pose>7.20157 -6.54046 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7.20157 -6.54046 0 0 -0 0</pose>
+          <pose>-6.0635 0.8243 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_4'>
-        <pose>-4.70993 3.16569 0 0 -0 0</pose>
+        <pose>-3.85216 0.679841 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.70993 3.16569 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_40'>
-        <pose>7.04839 -8.24653 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7.04839 -8.24653 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_41'>
-        <pose>2.79153 4.16965 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2.79153 4.16965 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_42'>
-        <pose>4.27104 4.11388 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>4.27104 4.11388 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_43'>
-        <pose>2.82455 2.17179 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2.82455 2.17179 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_44'>
-        <pose>4.29045 2.19016 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>4.29045 2.19016 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_45'>
-        <pose>2.83598 0.262838 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2.83598 0.262838 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_46'>
-        <pose>4.22047 0.528726 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>4.22047 0.528726 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_47'>
-        <pose>2.93072 -1.3112 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2.93072 -1.3112 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_48'>
-        <pose>4.20532 -1.0451 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>4.20532 -1.0451 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_49'>
-        <pose>2.99733 -2.86535 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2.99733 -2.86535 0 0 -0 0</pose>
+          <pose>-3.85216 0.679841 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_5'>
-        <pose>-6.00265 -0.091605 0 0 -0 0</pose>
+        <pose>-6.51681 -3.63004 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-6.00265 -0.091605 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_50'>
-        <pose>4.22609 -2.65152 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>4.22609 -2.65152 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_51'>
-        <pose>3.55528 7.21766 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>3.55528 7.21766 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_52'>
-        <pose>4.88931 7.28805 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>4.88931 7.28805 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_53'>
-        <pose>7.18308 3.09186 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7.18308 3.09186 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_54'>
-        <pose>8.48741 3.04479 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>8.48741 3.04479 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_55'>
-        <pose>7.3039 1.41451 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7.3039 1.41451 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_56'>
-        <pose>6.28497 7.2427 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>6.28497 7.2427 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_57'>
-        <pose>7.66254 7.1674 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7.66254 7.1674 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_58'>
-        <pose>8.72182 1.26433 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>8.72182 1.26433 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_59'>
-        <pose>7.33351 -0.159258 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7.33351 -0.159258 0 0 -0 0</pose>
+          <pose>-6.51681 -3.63004 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_6'>
-        <pose>-4.78341 -0.06972 0 0 -0 0</pose>
+        <pose>-4.14269 -3.82484 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.78341 -0.06972 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_60'>
-        <pose>6.92611 -3.90742 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>6.92611 -3.90742 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='box_pallets_3_61'>
-        <pose>8.34721 -3.86507 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>8.34721 -3.86507 0 0 -0 0</pose>
+          <pose>-4.14269 -3.82484 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_7'>
-        <pose>-5.96265 -1.89598 0 0 -0 0</pose>
+        <pose>-6.56789 -6.57125 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-5.96265 -1.89598 0 0 -0 0</pose>
+          <pose>-6.56789 -6.57125 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_8'>
-        <pose>-4.75235 -1.85554 0 0 -0 0</pose>
+        <pose>-4.36099 -6.75474 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-4.75235 -1.85554 0 0 -0 0</pose>
+          <pose>-4.36099 -6.75474 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='box_pallets_3_9'>
-        <pose>-6.16144 -4.62841 0 0 -0 0</pose>
+        <pose>0.044049 6.04643 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-6.16144 -4.62841 0 0 -0 0</pose>
+          <pose>0.044049 6.04643 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -2108,7 +1444,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>5.86583 -9.70581 36.8774 0 1.3178 1.51619</pose>
+        <pose>2.11357 -7.02842 49.8518 -0 1.3298 1.59181</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

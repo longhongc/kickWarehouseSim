@@ -25,7 +25,6 @@ def generate_launch_description():
   robot_file_name = 'robot_description_v6/model.sdf'
   robot_file_path = os.path.join(pkg_robot_share, 'models', robot_file_name)
 
-
   # Launch configuration variables specific to simulation
   headless = LaunchConfiguration('headless')
   use_simulator = LaunchConfiguration('use_simulator')
