@@ -1,0 +1,344 @@
+<sdf version='1.7'>
+  <model name='office_bot_v5'>
+    <link name='base_footprint'>
+      <inertial>
+        <pose>0.091149 5e-06 0.052827 0 -0 0</pose>
+        <mass>3.24466</mass>
+        <inertia>
+          <ixx>0.0380689</ixx>
+          <ixy>1.71289e-06</ixy>
+          <ixz>0.00212857</ixz>
+          <iyy>0.133082</iyy>
+          <iyz>5.76258e-07</iyz>
+          <izz>0.163573</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__IMU_collision_1'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/IMU.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__Lidar_collision_2'>
+        <pose>1.8e-05 0.000357 0.25069 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Lidar.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__Oak_Camera_collision_3'>
+        <pose>0.076898 0 0.22075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Oak_Camera.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__UT_Sensors_collision_4'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/UT_Sensors.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_footprint_fixed_joint_lump__base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__IMU_visual_1'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/IMU.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__Lidar_visual_2'>
+        <pose>1.8e-05 0.000357 0.25069 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Lidar.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__Oak_Camera_visual_3'>
+        <pose>0.076898 0 0.22075 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Oak_Camera.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__UT_Sensors_visual_4'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/UT_Sensors.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Back_Left_Joint' type='revolute'>
+      <pose relative_to='base_footprint'>-0.17 0.245 0.0425 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>Back_Left_Wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <effort>1</effort>
+          <velocity>1</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Back_Left_Wheel'>
+      <pose relative_to='Back_Left_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.225959 -0.244997 0.00634 0 -0 0</pose>
+        <mass>5.28505</mass>
+        <inertia>
+          <ixx>0.179429</ixx>
+          <ixy>1.06457e-06</ixy>
+          <ixz>0.00077073</ixz>
+          <iyy>0.229133</iyy>
+          <iyz>-9.57901e-07</iyz>
+          <izz>0.370751</izz>
+        </inertia>
+      </inertial>
+      <collision name='Back_Left_Wheel_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Back_Left_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Back_Left_Wheel_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Back_Left_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Back_Right_Joint' type='revolute'>
+      <pose relative_to='base_footprint'>-0.17 -0.245 0.0425 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>Back_Right_Wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <effort>1</effort>
+          <velocity>1</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Back_Right_Wheel'>
+      <pose relative_to='Back_Right_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.225959 0.245003 0.00634 0 -0 0</pose>
+        <mass>5.28505</mass>
+        <inertia>
+          <ixx>0.179429</ixx>
+          <ixy>1.06457e-06</ixy>
+          <ixz>0.00077073</ixz>
+          <iyy>0.229133</iyy>
+          <iyz>-9.57901e-07</iyz>
+          <izz>0.370751</izz>
+        </inertia>
+      </inertial>
+      <collision name='Back_Right_Wheel_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Back_Right_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Back_Right_Wheel_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Back_Right_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Front_Left_Joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.17 0.245 0.0425 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>Front_Left_Wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <effort>1</effort>
+          <velocity>1</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Front_Left_Wheel'>
+      <pose relative_to='Front_Left_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.114041 -0.244997 0.00634 0 -0 0</pose>
+        <mass>5.28505</mass>
+        <inertia>
+          <ixx>0.179429</ixx>
+          <ixy>1.06457e-06</ixy>
+          <ixz>0.00077073</ixz>
+          <iyy>0.229133</iyy>
+          <iyz>-9.57901e-07</iyz>
+          <izz>0.370751</izz>
+        </inertia>
+      </inertial>
+      <collision name='Front_Left_Wheel_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Front_Left_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Front_Left_Wheel_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Front_Left_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='Front_Right_Joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.17 -0.245 0.0425 0 0 -0.069813</pose>
+      <parent>base_footprint</parent>
+      <child>Front_Right_Wheel</child>
+      <axis>
+        <xyz>-0.069756 0.99756 0</xyz>
+        <limit>
+          <effort>1</effort>
+          <velocity>1</velocity>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='Front_Right_Wheel'>
+      <pose relative_to='Front_Right_Joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.130853 0.236451 0.00634 0 -0 0</pose>
+        <mass>5.28505</mass>
+        <inertia>
+          <ixx>0.179671</ixx>
+          <ixy>-0.00345768</ixy>
+          <ixz>0.000768919</ixz>
+          <iyy>0.228892</iyy>
+          <iyz>5.28078e-05</iyz>
+          <izz>0.370751</izz>
+        </inertia>
+      </inertial>
+      <collision name='Front_Right_Wheel_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Front_Right_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='Front_Right_Wheel_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description_v5/meshes/Front_Right_Wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <static>0</static>
+
+<!-- Differential Drive Plugin -->
+    <plugin name='wheel_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+      <num_wheel_pairs>2</num_wheel_pairs>
+      <left_joint>Back_Left_Joint</left_joint>
+      <left_joint>Front_Left_Joint</left_joint>
+      <right_joint>Front_Right_Joint</right_joint>
+      <right_joint>Back_Right_Joint</right_joint>
+      <wheel_separation>0.49</wheel_separation>
+      <wheel_diameter>0.130</wheel_diameter>
+      <max_wheel_torque>20.0</max_wheel_torque>
+      <max_wheel_acceleration>10.0</max_wheel_acceleration>
+      <odometry_source>1</odometry_source>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <publish_odom>1</publish_odom>
+      <publish_odom_tf>1</publish_odom_tf>
+      <update_rate>100.0</update_rate>
+    </plugin> 
+
+<!-- Joint State Publisher Plugin -->
+  <plugin name="robot_joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+    <ros>
+      <remapping>~/out:=joint_states</remapping>
+    </ros>
+    <update_rate>30</update_rate>
+    <joint_name>Back_Left_Joint</joint_name>
+    <joint_name>Front_Left_Joint</joint_name>
+    <joint_name>Front_Right_Joint</joint_name>
+    <joint_name>Back_Right_Joint</joint_name>
+  </plugin>  
+  </model>
+</sdf>
