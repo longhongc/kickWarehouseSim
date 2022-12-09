@@ -13,42 +13,40 @@ from launch.actions import TimerAction
 def generate_launch_description():
 
   # Set the path to different files and folders.
+  ## Robot model
   robot_model_dir = FindPackageShare(package='robot_model').find('robot_model')
   robot_file_name = 'office_bot_v6.urdf'
   robot_file_path = os.path.join(robot_model_dir, 'models', robot_file_name)
 
+  ## Robot localization
   ekf_file_name = 'ekf_test.yaml'
   ekf_params_path = os.path.join(robot_model_dir, 'params', ekf_file_name)
 
-  warehouse_simulation_dir = FindPackageShare(package='warehouse_simulation').find('warehouse_simulation')
-  # map_path = os.path.join(simulation_pkg_share, 'maps', 'map_1670396336.yaml')
-  # map_path = os.path.join(warehouse_simulation_dir, 'maps', 'map_2.yaml')
-  map_path = os.path.join(warehouse_simulation_dir, 'maps', 'warehouse_map.yaml')
-  # map_path = os.path.join(warehouse_simulation_dir, 'maps', 'test.yaml')
+  ## Maps
+  # map_path = os.path.join(robot_model_dir, 'maps', 'map_1670396336.yaml')
+  # map_path = os.path.join(robot_model_dir, 'maps', 'map_2.yaml')
+  # map_path = os.path.join(robot_model_dir, 'maps', 'test.yaml')
+  map_path = os.path.join(robot_model_dir, 'maps', 'warehouse_map.yaml')
+  serialized_map_path = os.path.join(robot_model_dir, 'maps', 'warehouse_map_serialized')
 
-  serialized_map_path = os.path.join(warehouse_simulation_dir, 'maps', 'warehouse_map_serialized')
-
-  # slam_toolbox_file_name = 'mapping.yaml'
-  # slam_toolbox_file_name = 'mapper_params_localization.yaml'
+  ## Slam toolbox
   slam_toolbox_file_name = 'mapper_params_online_async.yaml'
   slam_toolbox_params_path = os.path.join(robot_model_dir, 'params', 'slam_toolbox', slam_toolbox_file_name)
 
-  # Get the launch directory
-  bringup_dir = get_package_share_directory('nav2_bringup')
-  launch_dir = os.path.join(bringup_dir, 'launch')
+  ## Nav2
+  nav2_bringup_dir = get_package_share_directory('nav2_bringup')
+  nav2_params_file = os.path.join(nav2_bringup_dir, 'params', 'nav2_params.yaml'),
 
   # Launch configuration variables specific to simulation
   namespace = LaunchConfiguration('namespace')
   use_namespace = LaunchConfiguration('use_namespace')
-
   model = LaunchConfiguration('model')
   use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
   use_sim_time = LaunchConfiguration('use_sim_time')
   use_robot_localization = LaunchConfiguration('use_robot_localization')
 
+  ## Nav2 launch configuration
   slam = LaunchConfiguration('slam')
-  params_file = LaunchConfiguration('params_file')
-  default_bt_xml_filename = LaunchConfiguration('default_bt_xml_filename')
   autostart = LaunchConfiguration('autostart')
 
   # Declare the launch arguments  
@@ -86,17 +84,6 @@ def generate_launch_description():
         'slam',
         default_value='False',
         description='Whether run a SLAM')
-  declare_params_file_cmd = DeclareLaunchArgument(
-    'params_file',
-    default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
-    description='Full path to the ROS2 parameters file to use for all launched nodes')
-
-  declare_bt_xml_cmd = DeclareLaunchArgument(
-        'default_bt_xml_filename',
-        default_value=os.path.join(
-            get_package_share_directory('nav2_bt_navigator'),
-            'behavior_trees', 'navigate_w_replanning_and_recovery.xml'),
-        description='Full path to the behavior tree xml file to use')
 
   declare_autostart_cmd = DeclareLaunchArgument(
         'autostart', default_value='true',
@@ -107,7 +94,7 @@ def generate_launch_description():
   remappings = [('/tf', 'tf'),
                 ('/tf_static', 'tf_static')]
  
-  # Subscribe to the joint states of the robot, and publish the 3D pose of each link.
+  ## Subscribe to the joint states of the robot, and publish the 3D pose of each link.
   start_robot_state_publisher_cmd = Node(
     condition=IfCondition(use_robot_state_pub),
     package='robot_state_publisher',
@@ -129,7 +116,7 @@ def generate_launch_description():
   #   parameters=[ekf_params_path],
   #   condition=IfCondition(use_robot_localization))
 
-  # include slam_toolbox
+  ## include slam_toolbox
   start_slam_toolbox_cmd = Node(
     package='slam_toolbox',
     executable='async_slam_toolbox_node',
@@ -145,15 +132,15 @@ def generate_launch_description():
     # executable='localization_slam_toolbox_node',
 
   start_nav2_bringup_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(launch_dir, 'bringup_launch.py')),
+        PythonLaunchDescriptionSource(os.path.join(nav2_bringup_dir, 'launch', 'bringup_launch.py')),
         launch_arguments={'namespace': namespace,
                           'use_namespace': use_namespace,
                           'slam': slam,
                           'map': map_path,
+                          'params_file': nav2_params_file,
                           'use_sim_time': use_sim_time,
-                          'params_file': params_file,
-                          'default_bt_xml_filename': default_bt_xml_filename,
                           'autostart': autostart}.items())
+
   # include nav2
   # nav2_launch = IncludeLaunchDescription(
   #    PythonLaunchDescriptionSource(
@@ -174,8 +161,6 @@ def generate_launch_description():
   ld.add_action(declare_use_robot_localization_cmd)
 
   ld.add_action(declare_slam_cmd)
-  ld.add_action(declare_params_file_cmd)
-  ld.add_action(declare_bt_xml_cmd)
   ld.add_action(declare_autostart_cmd)
 
   # Add any actions
@@ -183,7 +168,6 @@ def generate_launch_description():
   # ld.add_action(start_ekf_cmd)
   ld.add_action(start_slam_toolbox_cmd)
   # ld.add_action(nav2_launch)
-  # ld.add_action(start_ros2_navigation_cmd)
   ld.add_action(start_nav2_bringup_cmd)
 
   return ld
