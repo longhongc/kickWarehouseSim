@@ -14,8 +14,9 @@ from launch.actions import TimerAction
 def generate_launch_description():
 
   # Set the path to different files and folders.
-  pkg_share = FindPackageShare(package='robot_model').find('robot_model')
-  default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf_config_with_model.rviz')
+  warehouse_simulation_dir = FindPackageShare(package='warehouse_simulation').find('warehouse_simulation')
+  rviz_file_name = 'mapping_and_navigation.rviz'
+  default_rviz_config_path = os.path.join(warehouse_simulation_dir, 'rviz', rviz_file_name)
 
   rviz_config_file = LaunchConfiguration('rviz_config_file')
 

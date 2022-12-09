@@ -17,9 +17,6 @@ def generate_launch_description():
   robot_file_name = 'office_bot_v6.urdf'
   robot_file_path = os.path.join(robot_model_dir, 'models', robot_file_name)
 
-  default_rviz_config_path = os.path.join(robot_model_dir, 'rviz/urdf_config_with_model.rviz')
-  # default_rviz_config_path = os.path.join(robot_model_dir, 'rviz/rviz_config_test.rviz')
-
   ekf_file_name = 'ekf_test.yaml'
   ekf_params_path = os.path.join(robot_model_dir, 'params', ekf_file_name)
 
@@ -39,15 +36,12 @@ def generate_launch_description():
   # Get the launch directory
   bringup_dir = get_package_share_directory('nav2_bringup')
   launch_dir = os.path.join(bringup_dir, 'launch')
-  # default_rviz_config_path=os.path.join(bringup_dir, 'rviz', 'nav2_default_view.rviz'),
 
   # Launch configuration variables specific to simulation
   namespace = LaunchConfiguration('namespace')
   use_namespace = LaunchConfiguration('use_namespace')
 
   model = LaunchConfiguration('model')
-  rviz_config_file = LaunchConfiguration('rviz_config_file')
-  use_rviz = LaunchConfiguration('use_rviz')
   use_robot_state_pub = LaunchConfiguration('use_robot_state_pub')
   use_sim_time = LaunchConfiguration('use_sim_time')
   use_robot_localization = LaunchConfiguration('use_robot_localization')
@@ -73,16 +67,6 @@ def generate_launch_description():
     default_value=robot_file_path, 
     description='Absolute path to robot urdf file')
     
-  declare_rviz_config_file_cmd = DeclareLaunchArgument(
-    name='rviz_config_file',
-    default_value=default_rviz_config_path,
-    description='Full path to the RVIZ config file to use')
-
-  declare_use_rviz_cmd = DeclareLaunchArgument(
-    name='use_rviz',
-    default_value='True',
-    description='Whether to start RVIZ')
- 
   declare_use_robot_state_pub_cmd = DeclareLaunchArgument(
     name='use_robot_state_pub',
     default_value='True',
@@ -160,12 +144,6 @@ def generate_launch_description():
     # executable='async_slam_toolbox_node',
     # executable='localization_slam_toolbox_node',
 
-  start_rviz_cmd = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(os.path.join(robot_model_dir, 'launch', 'rviz2.launch.py')),
-    condition=IfCondition(use_rviz),
-    launch_arguments={
-        'rviz_config_file': rviz_config_file}.items())
-
   start_nav2_bringup_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(launch_dir, 'bringup_launch.py')),
         launch_arguments={'namespace': namespace,
@@ -191,8 +169,6 @@ def generate_launch_description():
   ld.add_action(declare_namespace_cmd)
   ld.add_action(declare_use_namespace_cmd)
   ld.add_action(declare_model_path_cmd)
-  ld.add_action(declare_rviz_config_file_cmd)
-  ld.add_action(declare_use_rviz_cmd) 
   ld.add_action(declare_use_robot_state_pub_cmd)  
   ld.add_action(declare_use_sim_time_cmd)
   ld.add_action(declare_use_robot_localization_cmd)
@@ -204,7 +180,6 @@ def generate_launch_description():
 
   # Add any actions
   ld.add_action(start_robot_state_publisher_cmd)
-  # ld.add_action(start_rviz_cmd)
   # ld.add_action(start_ekf_cmd)
   ld.add_action(start_slam_toolbox_cmd)
   # ld.add_action(nav2_launch)

@@ -11,11 +11,10 @@ from ament_index_python import get_package_share_directory
 from launch.actions import TimerAction
 
 def generate_launch_description():
-  pkg_gazebo_ros = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
-  pkg_share = FindPackageShare(package='warehouse_simulation').find('warehouse_simulation')
+  gazebo_ros_dir = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
+  warehouse_simulation_dir = FindPackageShare(package='warehouse_simulation').find('warehouse_simulation')
   world_file_name = 'warehouse.world'
-  world_path = os.path.join(pkg_share, 'worlds', world_file_name)
-
+  world_path = os.path.join(warehouse_simulation_dir, 'worlds', world_file_name)
 
   # Launch configuration variables specific to simulation
   headless = LaunchConfiguration('headless')
@@ -40,13 +39,13 @@ def generate_launch_description():
 
   # Start Gazebo server
   start_gazebo_server_cmd = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')),
+    PythonLaunchDescriptionSource(os.path.join(gazebo_ros_dir, 'launch', 'gzserver.launch.py')),
     condition=IfCondition(use_simulator),
     launch_arguments={'world': world}.items())
     
   # Start Gazebo client    
   start_gazebo_client_cmd = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')),
+    PythonLaunchDescriptionSource(os.path.join(gazebo_ros_dir, 'launch', 'gzclient.launch.py')),
     condition=IfCondition(PythonExpression([use_simulator, ' and not ', headless])))
 
   # Create the launch description and populate
