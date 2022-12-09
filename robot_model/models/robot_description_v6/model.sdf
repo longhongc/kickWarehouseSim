@@ -136,7 +136,7 @@
     </joint>
 
     <joint name='Front_Right_Joint' type='revolute'>
-      <pose relative_to='base_link'>0.17 -0.245 0.0425 0 0 -0.069813</pose>
+      <pose relative_to='base_link'>0.17 -0.245 0.0425 0 0 0</pose>
       <parent>base_link</parent>
       <child>Front_Right_Wheel</child>
       <axis>
@@ -278,7 +278,7 @@
         </inertia>
       </inertial>
       <collision name='Front_Right_Wheel_collision'>
-        <pose>0 0 0 0 -0 0</pose>
+        <pose>0 0 0 0 -0 -0.069813</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -287,7 +287,7 @@
         </geometry>
       </collision>
       <visual name='Front_Right_Wheel_visual'>
-        <pose>0 0 0 0 -0 0</pose>
+        <pose>0 0 0 0 -0 -0.069813</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>

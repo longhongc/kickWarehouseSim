@@ -14,7 +14,7 @@ def generate_launch_description():
 
   # Set the path to different files and folders.
   robot_model_dir = FindPackageShare(package='robot_model').find('robot_model')
-  robot_file_name = 'office_bot_v5.urdf'
+  robot_file_name = 'office_bot_v6.urdf'
   robot_file_path = os.path.join(robot_model_dir, 'models', robot_file_name)
 
   default_rviz_config_path = os.path.join(robot_model_dir, 'rviz/urdf_config_with_model.rviz')
@@ -131,7 +131,8 @@ def generate_launch_description():
     name='robot_state_publisher',
     namespace=namespace,
     output='screen',
-    parameters=[{'use_sim_time': use_sim_time}],
+    parameters=[{
+        'use_sim_time': use_sim_time}],
     remappings=remappings,
     arguments=[robot_file_path])
       
