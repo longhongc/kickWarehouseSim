@@ -269,11 +269,11 @@
         <pose>0 0 0 0 0 0</pose>
         <mass>5.28505</mass>
         <inertia>
-          <ixx>0.179671</ixx>
-          <ixy>-0.00345768</ixy>
-          <ixz>0.000768919</ixz>
-          <iyy>0.228892</iyy>
-          <iyz>5.28078e-05</iyz>
+          <ixx>0.179429</ixx>
+          <ixy>1.06457e-06</ixy>
+          <ixz>0.00077073</ixz>
+          <iyy>0.229133</iyy>
+          <iyz>-9.57901e-07</iyz>
           <izz>0.370751</izz>
         </inertia>
       </inertial>
