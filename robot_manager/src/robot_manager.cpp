@@ -8,7 +8,7 @@
 #include "robot_manager/robot_manager.hpp"
 
 enum class RobotManagerState{INIT, IDLE, ON_ROUTINE, FINISH};
-enum class WaypointState{IN_QUEUE, FAIL, COMPLETE};
+enum class WaypointState{DEFAULT, FAIL, COMPLETE};
 
 RobotManager::RobotManager()
 : Node("robot_manager"), 
@@ -21,13 +21,13 @@ void RobotManager::initialize()
 {
   nav_to_pose_client_ = nullptr;
   waypoints_marker_pub_ = 
-    this->create_publisher<visualization_msgs::msg::Marker>(
-        "/waypoints_marker", 
+    this->create_publisher<visualization_msgs::msg::MarkerArray>(
+        "waypoints_marker", 
         10);
 
   waypoints_marker_timer_ =
     this->create_wall_timer(
-    100ms,
+    200ms,
     std::bind(&RobotManager::waypointsMarkerCallback, this)
     );
 
@@ -43,18 +43,23 @@ void RobotManager::initialize()
   waypoint_C.pose.position.y = -5;
 
   // Create waypoint dictionary
-  waypoint_dict_["A"] = waypoint_A;
-  waypoint_dict_["B"] = waypoint_B;
-  waypoint_dict_["C"] = waypoint_C;
+  waypoint_name_to_pose_["A"] = waypoint_A;
+  waypoint_name_to_pose_["B"] = waypoint_B;
+  waypoint_name_to_pose_["C"] = waypoint_C;
+
+  waypoint_name_to_index_["A"] = 0;
+  waypoint_name_to_index_["B"] = 1;
+  waypoint_name_to_index_["C"] = 2;
 
   // Create fake routine
   std::vector<std::string> routine{"A", "B", "C"};
 
   // Create routine
-  for (auto & id: routine) {
-   routine_pose_.push_back(waypoint_dict_[id]);
-   current_routine_queue_.push(waypoint_dict_[id]);
-   waypoints_state_.push_back(WaypointState::IN_QUEUE);
+  for (auto & name: routine) {
+   routine_by_name_.push_back(name);
+   routine_by_pose_.push_back(waypoint_name_to_pose_[name]);
+   waypoints_state_.push_back(WaypointState::DEFAULT);
+   current_queue_.push(name);
   }
 
   control_cycle_timer_ =
@@ -63,11 +68,7 @@ void RobotManager::initialize()
     std::bind(&RobotManager::controlCycleCallback, this)
     );
 
-  // nav_to_pose_client_ = std::make_shared<NavActionClient>();
-  // action_client_executor_.add_node(nav_to_pose_client_);
-  // action_client_executor_.spin();
   robot_manager_state_ = RobotManagerState::ON_ROUTINE;
-  // rclcpp::spin(nav_to_pose_client_);
 }
 
 void RobotManager::controlCycleCallback()
@@ -85,12 +86,11 @@ void RobotManager::controlCycleCallback()
       break;
 
     case RobotManagerState::ON_ROUTINE:
-      
       this->runRoutine();
-      // rclcpp::spin_some(nav_to_pose_client_);
       break;
 
     case RobotManagerState::FINISH:
+      this->reset();
       break;
 
     default:
@@ -108,13 +108,19 @@ void RobotManager::runRoutine()
   bool have_result = this->nav_to_pose_client_->getResult();
 
   if (have_result) {
+    auto current_waypoint_pose = waypoint_name_to_pose_[current_waypoint_];
+    auto current_waypoint_index = waypoint_name_to_index_[current_waypoint_];
+
     RCLCPP_INFO_STREAM(this->get_logger(),
       "Finished waypoint: " <<
-      "[x: " << this->current_waypoint_.pose.position.x <<
-      ", y: " << this->current_waypoint_.pose.position.y << "]");
+      "[x: " << current_waypoint_pose.pose.position.x <<
+      ", y: " << current_waypoint_pose.pose.position.y << "]");
+
+    // Todo: Analyze result
+    waypoints_state_[current_waypoint_index] = WaypointState::COMPLETE;
 
     // Finish routine
-    if (this->current_routine_queue_.empty()) {
+    if (this->current_queue_.empty()) {
       RCLCPP_INFO(this->get_logger(),
         "Finished routine");
 
@@ -130,33 +136,61 @@ bool RobotManager::runWaypoint()
 {
   // Reset action client for next waypoint
   this->nav_to_pose_client_->reset();
-  auto next_waypoint = current_routine_queue_.front();
+  auto next_waypoint = current_queue_.front();
+  auto next_waypoint_pose = waypoint_name_to_pose_[next_waypoint];
   bool send_goal_success = 
-    nav_to_pose_client_->sendGoal(next_waypoint);
+    nav_to_pose_client_->sendGoal(next_waypoint_pose);
 
   if (send_goal_success) {
     this->current_waypoint_ = next_waypoint;
-    this->current_routine_queue_.pop();
+    this->current_queue_.pop();
   }
   
   return send_goal_success;
 }
 
+void RobotManager::reset()
+{
+  for (int i=0; i < int(waypoints_state_.size()); ++i) {
+    waypoints_state[i] = WaypointState::DEFAULT;
+  }
+}
+
 void RobotManager::waypointsMarkerCallback()
 {
   auto marker = visualization_msgs::msg::Marker();
-
   marker.header.frame_id = "map";
   marker.header.stamp = this->now();
   marker.ns = "robot_manager"; 
-  marker.id = 0;
   marker.type = visualization_msgs::msg::Marker::CUBE;
   marker.action = visualization_msgs::msg::Marker::ADD;
+  marker.color.a = 0.7;
   marker.scale.x = 1;
   marker.scale.y = 1;
-  marker.scale.z = 0.1;
-  marker.color.a = 1.0;
-  marker.color.g = 1.0;
+  marker.scale.z = 0.05;
 
-  waypoints_marker_pub_->publish(marker);
+  auto marker_array = visualization_msgs::msg::MarkerArray();
+
+  for (int i=0; i < int(waypoints_state_.size()); ++i) {
+    marker.id = i; 
+    marker.pose = routine_by_pose_[i].pose;
+
+    switch(waypoints_state_[i]) {
+      case WaypointState::DEFAULT:
+        marker.color.r = 1.5;
+        marker.color.g = 1.0;
+        break;
+      case WaypointState::FAIL:
+        marker.color.r = 1.0;
+        marker.color.g = 0.0;
+        break;
+      case WaypointState::COMPLETE:
+        marker.color.r = 0.0;
+        marker.color.g = 1.0;
+        break;
+    }
+    marker_array.markers.push_back(marker);
+  }
+
+  waypoints_marker_pub_->publish(marker_array);
 }

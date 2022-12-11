@@ -41,17 +41,19 @@ private:
   rclcpp::TimerBase::SharedPtr control_cycle_timer_;
   std::shared_ptr<NavActionClient> nav_to_pose_client_;
 
-  rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr waypoints_marker_pub_;
+  rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr waypoints_marker_pub_;
   rclcpp::TimerBase::SharedPtr waypoints_marker_timer_;
 
   // Todo: readin parameters
-  std::vector<geometry_msgs::msg::PoseStamped> routine_pose_;
-  std::queue<geometry_msgs::msg::PoseStamped> current_routine_queue_;
-  std::map<std::string, geometry_msgs::msg::PoseStamped> waypoint_dict_;
-  std::vector<WaypointState> waypoints_state_;
+  std::map<std::string, geometry_msgs::msg::PoseStamped> waypoint_name_to_pose_;
+  std::map<std::string, int> waypoint_name_to_index_;
 
-  geometry_msgs::msg::PoseStamped current_waypoint_;
-  bool on_waypoint = false;
+  std::vector<std::string> routine_by_name_;
+  std::vector<geometry_msgs::msg::PoseStamped> routine_by_pose_;
+
+  std::vector<WaypointState> waypoints_state_;
+  std::queue<std::string> current_queue_;
+  std::string current_waypoint_;
 
   rclcpp::Duration NAVIGATION_TIMEOUT{20s};
 };

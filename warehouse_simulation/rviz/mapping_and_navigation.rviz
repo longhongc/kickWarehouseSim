@@ -4,14 +4,8 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /Status1
-        - /Grid1
-        - /TF1
         - /TF1/Frames1
-        - /Map1
-        - /LaserScan1
-        - /RobotModel1
+        - /MarkerArray1
       Splitter Ratio: 0.3905472755432129
     Tree Height: 698
 Visualization Manager:
@@ -60,6 +54,8 @@ Visualization Manager:
           Value: true
         base_link:
           Value: false
+        map:
+          Value: true
         odom:
           Value: true
       Marker Scale: 5
@@ -68,26 +64,26 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_footprint:
-          base_link:
-            Back_Left_Wheel:
-              {}
-            Back_Right_Wheel:
-              {}
-            Front_Left_Wheel:
-              {}
-            Front_Right_Wheel:
-              {}
-            IMU:
-              {}
-            Lidar:
-              {}
-            Oak_Camera:
-              {}
-            UT_Sensors:
-              {}
-        odom:
-          {}
+        map:
+          odom:
+            base_footprint:
+              base_link:
+                Back_Left_Wheel:
+                  {}
+                Back_Right_Wheel:
+                  {}
+                Front_Left_Wheel:
+                  {}
+                Front_Right_Wheel:
+                  {}
+                IMU:
+                  {}
+                Lidar:
+                  {}
+                Oak_Camera:
+                  {}
+                UT_Sensors:
+                  {}
       Update Interval: 0
       Value: true
     - Alpha: 0.699999988079071
@@ -262,6 +258,18 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /waypoints_marker
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -306,16 +314,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 35.947669982910156
+      Distance: 41.6676025390625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.5738530158996582
-        Y: -1.5825672149658203
-        Z: -0.6430952548980713
+        X: 4.025228500366211
+        Y: -3.749558925628662
+        Z: -2.104719638824463
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
@@ -334,5 +342,5 @@ Window Geometry:
   Hide Right Dock: false
   QMainWindow State: 000000ff00000000fd00000001000000000000032600000356fc0200000001fb000000100044006900730070006c006100790073010000004700000356000000f100ffffff000004530000035600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Width: 1920
-  X: 313
-  Y: 372
+  X: 2733
+  Y: 222

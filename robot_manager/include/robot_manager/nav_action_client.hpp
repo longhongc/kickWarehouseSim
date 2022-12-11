@@ -51,6 +51,6 @@ private:
     geometry_msgs::msg::PoseStamped goal_pose_;
     rclcpp::Duration navigation_time_{0s};
     // Todo: pass in navigation timeout
-    rclcpp::Duration NAVIGATION_TIMEOUT{20s};
+    rclcpp::Duration NAVIGATION_TIMEOUT{300s};
 };
 #endif // ROBOT_MANAGER__NAV_ACTION_CLIENT_HPP_
