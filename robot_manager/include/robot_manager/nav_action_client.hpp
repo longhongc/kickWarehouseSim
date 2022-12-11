@@ -23,12 +23,15 @@ using GoalHandleNavToPose = rclcpp_action::ClientGoalHandle<NavToPoseAction>;
 
 enum class ClientState;
 
-class NavActionClient : public rclcpp::Node
+class NavActionClient
 {
 public:
-    NavActionClient();
+    NavActionClient(std::shared_ptr<rclcpp::Node> node);
+    ~NavActionClient();
     bool initialize();
+    void reset();
     bool sendGoal(geometry_msgs::msg::PoseStamped & waypoint);
+    bool onTask();
     bool getResult();
 
 private:
@@ -38,6 +41,8 @@ private:
         const std::shared_ptr<const NavToPoseAction::Feedback> feedback);
     void resultCallback(const GoalHandleNavToPose::WrappedResult & result);
 
+    std::shared_ptr<rclcpp::Node> node_;
+
     ClientState client_state_;
 
     rclcpp_action::Client<NavToPoseAction>::SharedPtr client_ptr_;
@@ -45,6 +50,7 @@ private:
     geometry_msgs::msg::PoseStamped current_pose_;
     geometry_msgs::msg::PoseStamped goal_pose_;
     rclcpp::Duration navigation_time_{0s};
+    // Todo: pass in navigation timeout
     rclcpp::Duration NAVIGATION_TIMEOUT{20s};
 };
 #endif // ROBOT_MANAGER__NAV_ACTION_CLIENT_HPP_

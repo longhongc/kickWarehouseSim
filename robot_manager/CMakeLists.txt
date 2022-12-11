@@ -23,37 +23,41 @@ find_package(rclcpp_action REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(nav2_msgs)
 find_package(geometry_msgs)
+find_package(visualization_msgs)
 
-# add_library(action_client SHARED
-#   src/minimal_action_client.cpp)
+# add_executable(nav_action_client 
+#   src/test_nav_action_client.cpp
+#   src/nav_action_client.cpp)
 #
-# ament_target_dependencies(action_client
+# target_include_directories(nav_action_client PUBLIC
+#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#   $<INSTALL_INTERFACE:include>)
+#
+# ament_target_dependencies(nav_action_client
 #   nav2_msgs
 #   geometry_msgs
 #   rclcpp
-#   rclcpp_action
-#   rclcpp_components)
-#
-# rclcpp_components_register_node(action_client PLUGIN
-#   "MinimalActionClient"
-#   EXECUTABLE minimal_action_client)
+#   rclcpp_action)
 
-add_executable(nav_action_client 
-  src/test_nav_action_client.cpp
+add_executable(robot_manager 
+  src/main.cpp
+  src/robot_manager.cpp
   src/nav_action_client.cpp)
 
-target_include_directories(nav_action_client PUBLIC
+target_include_directories(robot_manager PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-ament_target_dependencies(nav_action_client
+ament_target_dependencies(robot_manager
   nav2_msgs
   geometry_msgs
+  visualization_msgs
   rclcpp
   rclcpp_action)
 
 install(TARGETS
-  nav_action_client
+  # nav_action_client
+  robot_manager
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME})
