@@ -6,9 +6,9 @@ if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
 
-# Default to C++14
+# Default to C++17
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD 17)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -24,6 +24,7 @@ find_package(rclcpp_components REQUIRED)
 find_package(nav2_msgs)
 find_package(geometry_msgs)
 find_package(visualization_msgs)
+find_package(robot_manager_msgs)
 
 # add_executable(nav_action_client 
 #   src/test_nav_action_client.cpp
@@ -52,6 +53,7 @@ ament_target_dependencies(robot_manager
   nav2_msgs
   geometry_msgs
   visualization_msgs
+  robot_manager_msgs
   rclcpp
   rclcpp_action)
 

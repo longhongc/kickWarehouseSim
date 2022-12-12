@@ -10,6 +10,8 @@
 enum class RobotManagerState{INIT, IDLE, ON_ROUTINE, FINISH};
 enum class WaypointState{DEFAULT, FAIL, COMPLETE};
 
+using namespace std::placeholders;
+
 RobotManager::RobotManager()
 : Node("robot_manager"), 
   robot_manager_state_{RobotManagerState::INIT}
@@ -31,6 +33,11 @@ void RobotManager::initialize()
     std::bind(&RobotManager::waypointsMarkerCallback, this)
     );
 
+  // Create a service for setting routine
+  set_routine_service_ = this->create_service<SetRoutine>(
+    "set_routine",
+    std::bind(&RobotManager::setRoutineCallback, this, _1, _2));
+
   // Temporary waypoints and routine
   auto waypoint_A = geometry_msgs::msg::PoseStamped();
   waypoint_A.pose.position.x = 10;
@@ -51,15 +58,18 @@ void RobotManager::initialize()
   waypoint_name_to_index_["B"] = 1;
   waypoint_name_to_index_["C"] = 2;
 
+  waypoints_state_["A"] = WaypointState::DEFAULT;
+  waypoints_state_["B"] = WaypointState::DEFAULT;
+  waypoints_state_["C"] = WaypointState::DEFAULT;
+
   // Create fake routine
   std::vector<std::string> routine{"A", "B", "C"};
 
   // Create routine
   for (auto & name: routine) {
-   routine_by_name_.push_back(name);
-   routine_by_pose_.push_back(waypoint_name_to_pose_[name]);
-   waypoints_state_.push_back(WaypointState::DEFAULT);
-   current_queue_.push(name);
+    routine_by_name_.push_back(name);
+    routine_by_pose_.push_back(waypoint_name_to_pose_[name]);
+    current_queue_.push(name);
   }
 
   control_cycle_timer_ =
@@ -68,7 +78,7 @@ void RobotManager::initialize()
     std::bind(&RobotManager::controlCycleCallback, this)
     );
 
-  robot_manager_state_ = RobotManagerState::ON_ROUTINE;
+  robot_manager_state_ = RobotManagerState::IDLE;
 }
 
 void RobotManager::controlCycleCallback()
@@ -83,6 +93,8 @@ void RobotManager::controlCycleCallback()
       return;
 
     case RobotManagerState::IDLE:
+      RCLCPP_INFO_STREAM_ONCE(this->get_logger(),
+        "Waiting for routine ...");
       break;
 
     case RobotManagerState::ON_ROUTINE:
@@ -109,7 +121,6 @@ void RobotManager::runRoutine()
 
   if (have_result) {
     auto current_waypoint_pose = waypoint_name_to_pose_[current_waypoint_];
-    auto current_waypoint_index = waypoint_name_to_index_[current_waypoint_];
 
     RCLCPP_INFO_STREAM(this->get_logger(),
       "Finished waypoint: " <<
@@ -117,7 +128,7 @@ void RobotManager::runRoutine()
       ", y: " << current_waypoint_pose.pose.position.y << "]");
 
     // Todo: Analyze result
-    waypoints_state_[current_waypoint_index] = WaypointState::COMPLETE;
+    waypoints_state_[current_waypoint_] = WaypointState::COMPLETE;
 
     // Finish routine
     if (this->current_queue_.empty()) {
@@ -151,9 +162,16 @@ bool RobotManager::runWaypoint()
 
 void RobotManager::reset()
 {
-  for (int i=0; i < int(waypoints_state_.size()); ++i) {
-    waypoints_state[i] = WaypointState::DEFAULT;
+  for (auto& [_, state] : waypoints_state_) {
+    state = WaypointState::DEFAULT;
   }
+
+  this->routine_by_name_.clear();
+  this->routine_by_pose_.clear();
+  this->current_waypoint_.clear();
+
+  std::queue<std::string> empty_queue;
+  std::swap(current_queue_, empty_queue);
 }
 
 void RobotManager::waypointsMarkerCallback()
@@ -171,11 +189,11 @@ void RobotManager::waypointsMarkerCallback()
 
   auto marker_array = visualization_msgs::msg::MarkerArray();
 
-  for (int i=0; i < int(waypoints_state_.size()); ++i) {
-    marker.id = i; 
-    marker.pose = routine_by_pose_[i].pose;
+  for (auto& [name, state] : waypoints_state_) {
+    marker.id = waypoint_name_to_index_[name]; 
+    marker.pose = waypoint_name_to_pose_[name].pose;
 
-    switch(waypoints_state_[i]) {
+    switch(state) {
       case WaypointState::DEFAULT:
         marker.color.r = 1.5;
         marker.color.g = 1.0;
@@ -193,4 +211,36 @@ void RobotManager::waypointsMarkerCallback()
   }
 
   waypoints_marker_pub_->publish(marker_array);
+}
+
+void RobotManager::setRoutineCallback(
+  const std::shared_ptr<SetRoutine::Request> request,
+  std::shared_ptr<SetRoutine::Response> response)
+{
+  bool on_task = this->nav_to_pose_client_->onTask();
+  if (on_task) {
+    response->success = false;
+    response->msg = "Robot is executing previous routine";
+    return;
+  }
+
+  this->reset();
+  routine_by_name_ = request->routine;
+
+  std::string routine_sequence = "O ";
+
+  // Create routine
+  for (auto & name: routine_by_name_) {
+    routine_sequence += "-> ";
+    routine_sequence += name;
+    routine_by_pose_.push_back(waypoint_name_to_pose_[name]);
+    current_queue_.push(name);
+  }
+
+  RCLCPP_INFO_STREAM(this->get_logger(),
+      "Recevied routine " << routine_sequence);
+
+  robot_manager_state_ = RobotManagerState::ON_ROUTINE;
+  response->success = true;
+  response->msg = "Receved routine, ready to execute";
 }
