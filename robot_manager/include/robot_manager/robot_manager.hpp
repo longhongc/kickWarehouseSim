@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 
+#include "geometry_msgs/msg/pose.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "visualization_msgs/msg/marker.hpp"
 #include "visualization_msgs/msg/marker_array.hpp"
@@ -54,6 +55,7 @@ private:
   rclcpp::Service<SetRoutine>::SharedPtr set_routine_service_;
 
   // Todo: readin parameters
+  std::vector<std::string> waypoints_name_;
   std::map<std::string, geometry_msgs::msg::PoseStamped> waypoint_name_to_pose_;
   std::map<std::string, int> waypoint_name_to_index_;
   std::map<std::string, WaypointState> waypoints_state_;
@@ -63,6 +65,8 @@ private:
 
   std::queue<std::string> current_queue_;
   std::string current_waypoint_;
+
+  geometry_msgs::msg::Pose origin_;
 
   rclcpp::Duration NAVIGATION_TIMEOUT{20s};
 };

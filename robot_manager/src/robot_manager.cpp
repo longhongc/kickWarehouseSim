@@ -5,6 +5,8 @@
 // Email: longhongc@gmail.com
 
 
+#include <rcl_interfaces/msg/detail/parameter_descriptor__struct.hpp>
+
 #include "robot_manager/robot_manager.hpp"
 
 enum class RobotManagerState{INIT, IDLE, ON_ROUTINE, FINISH};
@@ -38,38 +40,89 @@ void RobotManager::initialize()
     "set_routine",
     std::bind(&RobotManager::setRoutineCallback, this, _1, _2));
 
-  // Temporary waypoints and routine
-  auto waypoint_A = geometry_msgs::msg::PoseStamped();
-  waypoint_A.pose.position.x = 10;
 
-  auto waypoint_B = geometry_msgs::msg::PoseStamped();
-  waypoint_B.pose.position.x = 17;
-  waypoint_B.pose.position.y = -17;
+  // Set ros parameter 
+  // Parameter: origin
+  auto origin_param_desc =
+    rcl_interfaces::msg::ParameterDescriptor{};
 
-  auto waypoint_C = geometry_msgs::msg::PoseStamped();
-  waypoint_C.pose.position.y = -5;
+  origin_param_desc.description =
+    "\nThis parameter is the origin of the robot spawning point "
+    "relative to the map.";
 
-  // Create waypoint dictionary
-  waypoint_name_to_pose_["A"] = waypoint_A;
-  waypoint_name_to_pose_["B"] = waypoint_B;
-  waypoint_name_to_pose_["C"] = waypoint_C;
+  std::vector<double> origin_vec{0, 0, 0, 0, 0, 0, 0};
+  this->declare_parameter("origin", origin_vec, origin_param_desc);
 
-  waypoint_name_to_index_["A"] = 0;
-  waypoint_name_to_index_["B"] = 1;
-  waypoint_name_to_index_["C"] = 2;
+  origin_vec = 
+    this->get_parameter("origin").as_double_array();
 
-  waypoints_state_["A"] = WaypointState::DEFAULT;
-  waypoints_state_["B"] = WaypointState::DEFAULT;
-  waypoints_state_["C"] = WaypointState::DEFAULT;
+  origin_ = geometry_msgs::msg::Pose();
+  origin_.position.x = origin_vec.at(0);
+  origin_.position.y = origin_vec.at(1);
+  origin_.position.z = origin_vec.at(2);
+  origin_.orientation.x = origin_vec.at(3);
+  origin_.orientation.y = origin_vec.at(4);
+  origin_.orientation.z = origin_vec.at(5);
+  origin_.orientation.w = origin_vec.at(6);
 
-  // Create fake routine
-  std::vector<std::string> routine{"A", "B", "C"};
+  RCLCPP_INFO_STREAM(this->get_logger(), 
+      "Robot origin: [x: " << origin_.position.x <<
+      ", y: " << origin_.position.y << 
+      ", z: " << origin_.position.z << "]");
 
-  // Create routine
-  for (auto & name: routine) {
-    routine_by_name_.push_back(name);
-    routine_by_pose_.push_back(waypoint_name_to_pose_[name]);
-    current_queue_.push(name);
+  // Parameter: waypoints_name
+  auto waypoints_name_desc =
+    rcl_interfaces::msg::ParameterDescriptor{};
+
+  waypoints_name_desc.description =
+    "\nThis parameter contains the name of waypoints.";
+
+  this->declare_parameter("waypoints_name", waypoints_name_, waypoints_name_desc);
+
+  waypoints_name_ = 
+    this->get_parameter("waypoints_name").as_string_array();
+
+  RCLCPP_INFO_STREAM(this->get_logger(), 
+      "Loading waypoints ...");
+
+  auto waypoints_desc =
+    rcl_interfaces::msg::ParameterDescriptor{};
+
+  
+  // Parameters: waypoints
+  for (int i=0; i < int(waypoints_name_.size()); ++i) {
+    std::string name = waypoints_name_[i];
+
+    std::vector<double> pose_vec{0, 0, 0, 0, 0, 0, 0};
+
+    waypoints_desc.description =
+      "\nThis parameter is the pose of waypoint " + name + ".";
+
+    this->declare_parameter("waypoints." + name, pose_vec, waypoints_desc);
+    pose_vec = 
+      this->get_parameter("waypoints." + name).as_double_array(); 
+
+    auto waypoint_pose = geometry_msgs::msg::Pose();
+    waypoint_pose.position.x = pose_vec.at(0);
+    waypoint_pose.position.y = pose_vec.at(1);
+    waypoint_pose.position.z = pose_vec.at(2);
+    waypoint_pose.orientation.x = pose_vec.at(3);
+    waypoint_pose.orientation.y = pose_vec.at(4);
+    waypoint_pose.orientation.z = pose_vec.at(5);
+    waypoint_pose.orientation.w = pose_vec.at(6);
+
+    RCLCPP_INFO_STREAM(this->get_logger(), 
+        "Waypoint " << name << ": [" <<
+        "x: " << waypoint_pose.position.x <<
+        ", y: " << waypoint_pose.position.y <<
+        ", z: " << waypoint_pose.position.z << "]");
+
+    // Add waypoint to dictionary
+    auto pose_stamped = geometry_msgs::msg::PoseStamped();
+    pose_stamped.pose = waypoint_pose;
+    waypoint_name_to_pose_[name] = pose_stamped;
+    waypoint_name_to_index_[name] = i;
+    waypoints_state_[name] = WaypointState::DEFAULT;
   }
 
   control_cycle_timer_ =

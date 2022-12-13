@@ -1,10 +1,11 @@
 robot_manager:
   ros__parameters:
     # Origin and waypoints use format geometry_msgs/Pose
-    origin: [0, 0, 0, 0, 0, 0, 1]
-    waypoints_pose:
-      A: [10, 0, 0, 0, 0, 0, 1]
-      B: [17, -17, 0, 0, 0, 0, 1]
-      C: [0, -5, 0, 0, 0, 0, 1]
+    origin: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+    waypoints_name: ['A', 'B', 'C']
+    waypoints:
+      A: [10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+      B: [17.0, -17.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+      C: [0.0, -5.0, 0.0, 0.0, 0.0, 0.0, 1.0]
 
 
