@@ -6,6 +6,7 @@
 
 
 #include "gazebo_msgs/srv/spawn_entity.hpp"
+#include "gazebo_msgs/srv/delete_entity.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
@@ -23,10 +24,11 @@ int main(int argc, char **argv) {
     ("/spawn_entity");
   // Get the request of count
   auto request = std::make_shared<gazebo_msgs::srv::SpawnEntity::Request>();
+  auto model = "<?xml version='1.0'?> <sdf version='1.6'> <model name='box_pallets_3'> <static>true</static> <link name='link'> <pose>0 0 0 0 0 0</pose> <collision name='collision'> <pose>0 0 1 0 0 0</pose> <geometry> <box> <size>2.2 2.8 2</size> </box> </geometry> </collision> <visual name='visual'> <pose>1.35 -1 0 0 0 -0.1</pose> <geometry> <mesh> <scale>0.02 0.02 0.02</scale> <uri>model://box_pallets_3/meshes/box_pallet.dae</uri> </mesh> </geometry> </visual> </link> </model> </sdf>";
 
-
-  request->xml = "<?xml version='1.0'?> <sdf version='1.6'> <model name='box_pallets_3'> <static>true</static> <link name='link'> <pose>0 0 0 0 0 0</pose> <collision name='collision'> <pose>0 0 1 0 0 0</pose> <geometry> <box> <size>2.2 2.8 2</size> </box> </geometry> </collision> <visual name='visual'> <pose>1.35 -1 0 0 0 -0.1</pose> <geometry> <mesh> <scale>0.02 0.02 0.02</scale> <uri>model://box_pallets_3/meshes/box_pallet.dae</uri> </mesh> </geometry> </visual> </link> </model> </sdf>";
-
+  request->name = "box_" + std::to_string(1);
+  request->xml = model;
+  request->initial_pose.position.x = 1;
   while (!client->wait_for_service(1s)) {
     if (!rclcpp::ok()) {
       RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), \
@@ -38,4 +40,25 @@ int main(int argc, char **argv) {
   }
   // Send the request
   auto result = client->async_send_request(request);
+
+
+  rclcpp::Client<gazebo_msgs::srv::DeleteEntity>::SharedPtr delete_client =
+  node->create_client<gazebo_msgs::srv::DeleteEntity>\
+  ("/delete_entity");
+
+  auto d_request = std::make_shared<gazebo_msgs::srv::DeleteEntity::Request>();
+  d_request->name = "box_" + std::to_string(1);
+  while (!delete_client->wait_for_service(1s)) {
+    if (!rclcpp::ok()) {
+      RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), \
+      "Interrupted while waiting for the service. Exiting.");
+      return 0;
+    }
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), \
+    "service not available, waiting again...");
+  }
+  // Send the request
+  auto result_d = delete_client->async_send_request(d_request);
+
+
 }
