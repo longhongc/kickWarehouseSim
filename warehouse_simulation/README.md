@@ -13,5 +13,10 @@ Run warehouse simulation
 ros2 launch warehouse_simulation warehouse_simulation.launch.py
 ```
 
+Run RVIZ to visualize robot and sensors
+```
+ros2 launch warehouse_simulation rviz2.launch.py
+```
+
 ## Resources
 How to build models in gazebo [link](https://longhongc.notion.site/Gazebo-tips-ROS2-6e7263dbfb1742d58cf54bbe6368d0c0)  

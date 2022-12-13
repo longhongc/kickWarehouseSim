@@ -1,0 +1,4 @@
+string[] routine
+---
+bool success
+string msg
