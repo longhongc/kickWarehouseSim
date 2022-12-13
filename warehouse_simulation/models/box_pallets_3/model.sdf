@@ -3,9 +3,9 @@
 <sdf version='1.6'>
   <model name='box_pallets_3'>
     <static>true</static>
-    <link name="link">
+    <link name='link'>
       <pose>0 0 0 0 0 0</pose>
-      <collision name="collision">
+      <collision name='collision'>
         <pose>0 0 1 0 0 0</pose>
         <geometry>
           <box>
@@ -13,7 +13,7 @@
           </box>
         </geometry>
       </collision>
-      <visual name="visual">
+      <visual name='visual'>
         <pose>1.35 -1 0 0 0 -0.1</pose>
         <geometry>
           <mesh>
