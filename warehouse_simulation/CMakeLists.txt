@@ -27,8 +27,19 @@ find_package(rosidl_default_generators REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/Modify.srv"
+ )
+ ament_export_dependencies(rosidl_default_runtime)
+
 add_executable(spawn src/spawner.cpp)
 ament_target_dependencies(spawn rclcpp std_msgs gazebo_msgs)
+
+add_executable(trial src/trial.cpp)
+ament_target_dependencies(trial rclcpp std_msgs gazebo_msgs)
+
+rosidl_target_interfaces(trial
+  ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 install(
   DIRECTORY models launch worlds rviz
@@ -36,6 +47,7 @@ install(
 )
 
 install(TARGETS
+  trial
   spawn
   DESTINATION lib/${PROJECT_NAME})
 
