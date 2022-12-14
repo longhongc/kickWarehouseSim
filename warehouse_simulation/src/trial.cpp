@@ -53,8 +53,8 @@ class WareHouse : public rclcpp::Node
             if(world[i][j] == 1){
                 request->name = "box_" + std::to_string(box);
                 request->xml = model;
-                request->initial_pose.position.x = 2.2*j;
-                request->initial_pose.position.y = 0.5 - 2.8*i;
+                request->initial_pose.position.x = 2.2*j - 7;
+                request->initial_pose.position.y = 0.2 - 2.8*i + 7;
                 while (!spawn_client_->wait_for_service(1s)) {
                 if (!rclcpp::ok()) {
                     RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), \
@@ -204,20 +204,20 @@ int modify[42] ;
     s_request->xml = model;
     
     if(bo[modify[i]].free[dir]  == 0){
-    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i;
-    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j + 0.3;
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i - 7;
+    s_request->initial_pose.position.y = 0.2 - 2.8*bo[modify[i]].j + 0.5 + 7;
     }
     if(bo[modify[i]].free[dir]  == 1){
-    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i + 0.3;
-    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j ;
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i + 0.5 - 7;
+    s_request->initial_pose.position.y = 0.2 - 2.8*bo[modify[i]].j + 7;
     }
     if(bo[modify[i]].free[dir]  == 2){
-    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i;
-    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j - 0.3;
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i - 7;
+    s_request->initial_pose.position.y = 0.2 - 2.8*bo[modify[i]].j - 0.5 + 7;
     }
     if(bo[modify[i]].free[dir]  == 3){
-    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i - 0.3;
-    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j ;
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i - 0.5 - 7;
+    s_request->initial_pose.position.y = 0.2 - 2.8*bo[modify[i]].j + 7;
     }
 
 
