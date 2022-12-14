@@ -14,6 +14,13 @@ using namespace std::chrono_literals;
 using Modify = warehouse_simulation::srv::Modify;
 using namespace std::placeholders;
 
+class Box {
+  public:
+  int i;
+  int j;
+  std::vector<int> free;
+};
+
 class WareHouse : public rclcpp::Node
 {
   public:
@@ -23,7 +30,7 @@ class WareHouse : public rclcpp::Node
       spawn_client_ = this->create_client<gazebo_msgs::srv::SpawnEntity>\
       ("/spawn_entity");
 
-      int tmp[6][7] = {{1,0,0,1,0,1,1},
+      int tmp[6][7] = { {1,0,0,1,0,1,1},
                         {1,0,0,1,1,1,1},
                         {1,1,0,1,1,1,1},
                         {1,1,0,0,0,0,0},
@@ -59,6 +66,8 @@ class WareHouse : public rclcpp::Node
                 // Send the request
 
                 auto result = spawn_client_->async_send_request(request);
+
+                calc(i,j);
                 box++;
                 }
                 
@@ -76,28 +85,107 @@ class WareHouse : public rclcpp::Node
     }
 
   private:
-    void modify_callback(const std::shared_ptr<Modify::Request> request,
+  void calc(int i, int j){
+    bo[box].i = j;
+    bo[box].j = i;
+    bo[box].free.clear();
+    bo[box].free.emplace_back(4);
+
+    if(i == 0){
+      bo[box].free.emplace_back(0);
+      if(world[i+1][j] == 0)
+          bo[box].free.emplace_back(2);
+
+      if(j == 0){
+        bo[box].free.emplace_back(3);
+        if(world[i][j+1] == 0)
+          bo[box].free.emplace_back(1);
+      }
+      else if (j == 6) {
+        bo[box].free.emplace_back(1); 
+        if(world[i][j-1] == 0)
+          bo[box].free.emplace_back(3);
+
+      }
+    }
+
+    if( i == 5){
+      bo[box].free.emplace_back(2);
+      if(world[i-1][j] == 0)
+          bo[box].free.emplace_back(0);
+      if(j == 0){
+        bo[box].free.emplace_back(3);
+        if(world[i][j+1] == 0)
+          bo[box].free.emplace_back(1);
+      }
+      else if (j == 6) {
+        bo[box].free.emplace_back(1); 
+        if(world[i][j-1] == 0)
+          bo[box].free.emplace_back(3);
+
+      }
+      
+
+    }
+
+    if(j == 0 && i != 0 && i != 5){
+      bo[box].free.emplace_back(3); 
+      if(world[i][j+1] == 0)
+          bo[box].free.emplace_back(1);
+      if(world[i-1][j] == 0)
+          bo[box].free.emplace_back(0);
+      if(world[i+1][j] == 0)
+          bo[box].free.emplace_back(2);
+    }
+
+    if(j == 6 && i != 0 && i != 5){
+      bo[box].free.emplace_back(1); 
+      if(world[i][j-1] == 0)
+          bo[box].free.emplace_back(3);
+      if(world[i-1][j] == 0)
+          bo[box].free.emplace_back(0);
+      if(world[i+1][j] == 0)
+          bo[box].free.emplace_back(2);
+    }
+
+    if(i != 0 && j != 0 && i != 5 && j != 6){
+      
+      if(world[i][j+1] == 0)
+          bo[box].free.emplace_back(1);
+      if(world[i][j-1] == 0)
+          bo[box].free.emplace_back(3);
+      if(world[i-1][j] == 0)
+          bo[box].free.emplace_back(0);
+      if(world[i+1][j] == 0)
+          bo[box].free.emplace_back(2);
+
+    }
+  }
+
+  void modify_callback(const std::shared_ptr<Modify::Request> request,
                           std::shared_ptr<Modify::Response> response) {
-        auto d_request = std::make_shared<gazebo_msgs::srv::DeleteEntity::Request>();
-        d_request->name = "box_" + std::to_string(16);
-        while (!delete_client->wait_for_service(1s)) {
-            if (!rclcpp::ok()) {
-            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), \
-            "Interrupted while waiting for the service. Exiting.");
-            break;
-            }
-            RCLCPP_INFO(rclcpp::get_logger("rclcpp"), \
-            "service not available, waiting again...");
+                            
+    auto d_request = std::make_shared<gazebo_msgs::srv::DeleteEntity::Request>();
+    d_request->name = "box_" + std::to_string(16);
+    while (!delete_client->wait_for_service(1s)) {
+        if (!rclcpp::ok()) {
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), \
+        "Interrupted while waiting for the service. Exiting.");
+        break;
         }
-        // Send the request
-        auto result_d = delete_client->async_send_request(d_request);
-        response->b = request->a;
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), \
+        "service not available, waiting again...");
+    }
+    // Send the request
+    auto result_d = delete_client->async_send_request(d_request);
+    response->b = request->a;
     }
     int world[6][7];
     rclcpp::Client<gazebo_msgs::srv::SpawnEntity>::SharedPtr spawn_client_;
     rclcpp::Client<gazebo_msgs::srv::DeleteEntity>::SharedPtr delete_client;
     rclcpp::Service<Modify>::SharedPtr get_modify_service_;
     int box;
+    Box bo[42];
 };
 
 int main(int argc, char * argv[]) {
