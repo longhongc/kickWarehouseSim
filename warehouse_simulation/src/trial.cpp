@@ -16,6 +16,7 @@ using namespace std::placeholders;
 
 class Box {
   public:
+  int id;
   int i;
   int j;
   std::vector<int> free;
@@ -75,6 +76,7 @@ class WareHouse : public rclcpp::Node
         }
     delete_client = this->create_client<gazebo_msgs::srv::DeleteEntity>\
     ("/delete_entity");
+    max = box;
 
      std::string get_modify_service_name =
         "/" + std::string(this->get_name()) + "/" + "Count";
@@ -86,10 +88,11 @@ class WareHouse : public rclcpp::Node
 
   private:
   void calc(int i, int j){
+    bo[box].id = box;
     bo[box].i = j;
     bo[box].j = i;
     bo[box].free.clear();
-    bo[box].free.emplace_back(4);
+    // bo[box].free.emplace_back(4);
 
     if(i == 0){
       bo[box].free.emplace_back(0);
@@ -162,30 +165,91 @@ class WareHouse : public rclcpp::Node
     }
   }
 
-  void modify_callback(const std::shared_ptr<Modify::Request> request,
+void modify_callback(const std::shared_ptr<Modify::Request> request,
                           std::shared_ptr<Modify::Response> response) {
-                            
-    auto d_request = std::make_shared<gazebo_msgs::srv::DeleteEntity::Request>();
-    d_request->name = "box_" + std::to_string(16);
-    while (!delete_client->wait_for_service(1s)) {
-        if (!rclcpp::ok()) {
+
+int modify[42] ;
+  for (int i= 0; i<request->a;i++){
+    modify[i] = rand() % max;
+    std::cout<<modify[i]<<"\n";
+  }
+  
+  
+  auto d_request = std::make_shared<gazebo_msgs::srv::DeleteEntity::Request>();
+  auto s_request = std::make_shared<gazebo_msgs::srv::SpawnEntity::Request>();
+   auto model = "<?xml version='1.0'?> <sdf version='1.6'> <model name='box_pallets_3'> <static>true</static> <link name='link'> <pose>0 0 0 0 0 0</pose> <collision name='collision'> <pose>0 0 1 0 0 0</pose> <geometry> <box> <size>2.2 2.8 2</size> </box> </geometry> </collision> <visual name='visual'> <pose>1.35 -1 0 0 0 -0.1</pose> <geometry> <mesh> <scale>0.02 0.02 0.02</scale> <uri>model://box_pallets_3/meshes/box_pallet.dae</uri> </mesh> </geometry> </visual> </link> </model> </sdf>";
+
+  for(int i = 0; i<request->a ; i++){
+  d_request->name = "box_" + std::to_string(bo[modify[i]].id);
+  while (!delete_client->wait_for_service(1s)) {
+    if (!rclcpp::ok()) {
+      RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), \
+      "Interrupted while waiting for the service. Exiting.");
+      break;
+    }
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), \
+    "service not available, waiting again...");
+  }
+  // Send the request
+  auto result_d = delete_client->async_send_request(d_request);
+
+  int dir = rand() % bo[modify[i]].free.size();
+  std::cout<<"\n" <<modify[i] << " " <<dir << bo[modify[i]].i << bo[modify[i]].j;
+
+  if(bo[modify[i]].free[dir] != 4)
+  {
+
+    bo[modify[i]].id = box;
+    s_request->name = "box_" + std::to_string(box);
+    s_request->xml = model;
+    
+    if(bo[modify[i]].free[dir]  == 0){
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i;
+    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j + 0.3;
+    }
+    if(bo[modify[i]].free[dir]  == 1){
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i + 0.3;
+    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j ;
+    }
+    if(bo[modify[i]].free[dir]  == 2){
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i;
+    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j - 0.3;
+    }
+    if(bo[modify[i]].free[dir]  == 3){
+    s_request->initial_pose.position.x = 2.2*bo[modify[i]].i - 0.3;
+    s_request->initial_pose.position.y = 0.5 - 2.8*bo[modify[i]].j ;
+    }
+
+
+
+    while (!spawn_client_->wait_for_service(1s)) {
+    if (!rclcpp::ok()) {
         RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), \
         "Interrupted while waiting for the service. Exiting.");
         break;
-        }
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), \
-        "service not available, waiting again...");
+    }
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), \
+    "service not available, waiting again...");
     }
     // Send the request
-    auto result_d = delete_client->async_send_request(d_request);
+
+    auto result = spawn_client_->async_send_request(s_request);
+    
+    std::cout<<"\n Box "<< box;
+    box++;
+    
+  }
+  
+  }
     response->b = request->a;
-    }
+}
     int world[6][7];
     rclcpp::Client<gazebo_msgs::srv::SpawnEntity>::SharedPtr spawn_client_;
     rclcpp::Client<gazebo_msgs::srv::DeleteEntity>::SharedPtr delete_client;
     rclcpp::Service<Modify>::SharedPtr get_modify_service_;
     int box;
     Box bo[42];
+    int max;
 };
 
 int main(int argc, char * argv[]) {
