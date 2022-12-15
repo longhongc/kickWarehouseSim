@@ -7,15 +7,14 @@
 #    https://github.com/marketplace/actions/coveralls-github-action
 #
 ##############################################################################
-
 name: Build
 
 on:
-  # Triggered whenever push to the master branch
+  # Triggered whenever push to the main branch
   push:
     branches: [ "main" ]
 
-  # Triggered whenever a pull request is created on master
+  # Triggered whenever a pull request is created on main
   pull_request:
     branches: [ "main" ]
     types: [opened]
@@ -30,15 +29,63 @@ jobs:
     runs-on: ubuntu-20.04
     
     steps:
-      # We want to use GitHub CI checkout version 3 for checking out the branch
-      - uses: ros-tooling/setup-ros@v0.3
-        with:
-          required-ros-distributions: foxy
-      - uses: ros-tooling/action-ros-ci@v0.2
-        with:
-          package-name: robot_manager
-          target-ros2-distro: foxy
-          skip-tests: true
+      # We want to use GitHub CI checkout version 3 to check out our branch
+      - uses: actions/checkout@v3
+      
+      # Install some system pacakges
+      - name: Install ROS 2 Humble packages
+        run: |
+          sudo apt update
+          sudo apt install -y software-properties-common
+          sudo add-apt-repository universe
+          sudo apt update && sudo apt install -y curl
+          sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
+            -o /usr/share/keyrings/ros-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) \
+            signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \
+            http://packages.ros.org/ros2/ubuntu \
+            $(. /etc/os-release && echo $UBUNTU_CODENAME) main" \
+            | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+          sudo apt update
+          sudo apt install ros-foxy-ros-base python3-argcomplete
+          sudo apt install -y lcov
+      # Build for test coverage
+      - name: Configure CMake flags and build exectables
+        run: |
+          source /opt/ros/humble/setup.bash
+          colcon build --packages-select warehouse_simulation
+
+# name: Build
+
+# on:
+#   # Triggered whenever push to the master branch
+#   push:
+#     branches: [ "main" ]
+
+#   # Triggered whenever a pull request is created on master
+#   pull_request:
+#     branches: [ "main" ]
+#     types: [opened]
+
+#   # Allow manual trigger
+#   workflow_dispatch:
+
+# jobs:
+#   build:
+#     # Create a container of the latest Ubuntu, other values could be
+#     # ubuntu-latest, ubuntu-22.04, etc.
+#     runs-on: ubuntu-20.04
+    
+#     steps:
+#       # We want to use GitHub CI checkout version 3 for checking out the branch
+#       - uses: ros-tooling/setup-ros@v0.3
+#         with:
+#           required-ros-distributions: foxy
+#       - uses: ros-tooling/action-ros-ci@v0.2
+#         with:
+#           package-name: robot_manager
+#           target-ros2-distro: foxy
+#           skip-tests: true
       
       # # Install some system pacakges
       # - name: Install packages
