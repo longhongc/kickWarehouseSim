@@ -12,7 +12,7 @@ Direct testing of algorithms in the real world has huge costs and safety concern
 Robot in the warehouse simulation is provided by Kick Robotics, LLC. 
 <p float="left">
   <img width="340" alt="robot_model" src="images/robot_model.png"> 
-  <img width="340" alt="kick" src="images/kick.png"> 
+  <img width="340" alt="kick" src="images/Kick_logo.JPG"> 
 </p>
 
 **Author:**  
