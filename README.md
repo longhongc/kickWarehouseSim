@@ -70,12 +70,11 @@ The waypoints in the routine are defined in robot_manager/config/waypoints.yaml
 ros2 service call /set_routine robot_manager_msgs/srv/SetRoutine "{routine: [A, B, C]}"
 ```
 Routine config example  
-<img width="627" alt="routine_config" src="images/routine_config.png"> 
+<img width="300" alt="routine_config" src="images/parameter_configs.png"> 
 
 ## Results
 Robot following a set of routine  
 <img width="627" alt="routine_rviz" src="images/routine_rviz_speedup.gif"> 
-
 
 ## Design
 ### UML
