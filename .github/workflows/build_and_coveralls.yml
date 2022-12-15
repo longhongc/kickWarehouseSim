@@ -36,7 +36,7 @@ jobs:
           required-ros-distributions: foxy
       - uses: ros-tooling/action-ros-ci@v0.2
         with:
-          package-name: kickWarehouseSim
+          package-name: warehouse_simulation
           target-ros2-distro: foxy
           skip-tests: true
       
