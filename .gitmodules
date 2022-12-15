@@ -1,0 +1,6 @@
+[submodule "third_party/navigation2"]
+	path = third_party/navigation2
+	url = https://github.com/ros-planning/navigation2.git
+[submodule "third_party/slam_toolbox"]
+	path = third_party/slam_toolbox
+	url = https://github.com/SteveMacenski/slam_toolbox.git
