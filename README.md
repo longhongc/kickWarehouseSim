@@ -95,8 +95,6 @@ ros2 launch warehouse_simulation e^Cty_warehouse.launch.py
 ros2 run warehouse_simulation warehouse
 ros2 service call /warehouse/Generate warehouse_simulation/srv/Modify "{a: 1}"
 ros2 service call /warehouse/Modify warehouse_simulation/srv/Modify "{a: 5}"
-
-
 ```
 
 
@@ -112,7 +110,7 @@ World Generation and Modification
 ## Design
 ### UML
 
-<img width="627" alt="UML_Initial" src="UML/Initial/UML_Initial.png"> 
+<img width="627" alt="UML_Initial" src="UML/Initial/UML_Revised.png"> 
 
 ### ROS Node Graph
 
@@ -120,6 +118,9 @@ World Generation and Modification
 
 ### Link to AIP Documents
 https://docs.google.com/spreadsheets/d/1jPUXeID2PA99P3RgWnmy4Ot1bprAT-mLDxvRTo3mwnE/edit?usp=sharing
+
+### Link to Presentation
+https://docs.google.com/presentation/d/1a7bCiWbXJOMIBw73r6T0CFLViDLNzy3EHOD3jxnlliw/edit?usp=sharing
 
 
 ## Known Issues
