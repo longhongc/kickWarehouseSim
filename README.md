@@ -5,11 +5,15 @@
 Direct testing of algorithms in the real world has huge costs and safety concerns associated with them. This is where simulation comes into picture. The agenda of this component is to create a software to automate simulation for evaluation of various algorithms that will be running on a wheeled robot.
 
 <p float="left">
-  <img width="340" alt="robot_model" src="images/robot_model.png"> 
   <img width="300" alt="warehouse_gazebo" src="images/warehouse_gazebo.png"> 
   <img width="320" alt="warehouse_rviz" src="images/rviz_show_waypoints.png"> 
 </p>
 
+Robot in the warehouse simulation is provided by Kick Robotics, LLC. 
+<p float="left">
+  <img width="340" alt="robot_model" src="images/robot_model.png"> 
+  <img width="340" alt="kick" src="images/kick.png"> 
+</p>
 
 **Author:**  
 |Name|UID|Github account|
@@ -22,8 +26,11 @@ Direct testing of algorithms in the real world has huge costs and safety concern
 - [**Dependencies**](#dependencies) 
 - [**Build**](#build) 
 - [**Run**](#run) 
-  - [**Routine simulation**](#routine-simulation)
+  - [**Routine Simulation**](#routine-simulation)
+  - [**Warehouse Simulation**](#warehouse-simulation)
 - [**Results**](#results)
+- [**Test**](#test)
+  - [**Robot Manager**](#robot-manager)
 - [**Design**](#design) 
 
 ## Dependencies
@@ -63,7 +70,7 @@ colcon build
 ```
 
 ## Run 
-### Routine simulation
+### Routine Simulation
 Start warehouse gazebo simulation
 ```
 ros2 launch warehouse_simulation warehouse_simulation.launch.py
@@ -88,8 +95,9 @@ ros2 service call /set_routine robot_manager_msgs/srv/SetRoutine "{routine: [A, 
 Routine config example  
 <img width="300" alt="routine_config" src="images/parameter_configs.png"> 
 
-## Warehouse Simulation
-
+### Warehouse Simulation
+The warehouse simulation generate a warehouse layout in the gazebo world on-the-fly.  
+It provides service to add a custom degree of changes to the base layout.
 ```
 ros2 launch warehouse_simulation e^Cty_warehouse.launch.py
 ros2 run warehouse_simulation warehouse
@@ -97,15 +105,28 @@ ros2 service call /warehouse/Generate warehouse_simulation/srv/Modify "{a: 1}"
 ros2 service call /warehouse/Modify warehouse_simulation/srv/Modify "{a: 5}"
 ```
 
-
-
-
 ## Results
 Robot following a set of routine  
 <img width="627" alt="routine_rviz" src="images/routine_rviz_speedup.gif"> 
 
-World Generation and Modification 
+World Generation and Modification   
 <img width="627" alt="routine_rviz" src="images/warehouse.gif"> 
+
+## Test
+### Robot Manager
+Run test
+```
+colcon test --event-handlers console_direct+ --packages-select robot_manager
+```
+<img width="300" alt="colcon_test_robot_manager" src="images/colcon_test_robot_manager.png"> 
+Run only gtest and no style check
+
+```
+ros2 launch robot_manager test_robot_manager.launch.py   
+```
+
+<img width="600" alt="gtest_robot_manager" src="images/gtest_robot_manager.png"> 
+
 
 ## Design
 ### UML
