@@ -1,8 +1,10 @@
 // Copyright 2022, Chang-Hong Chen
 // All rights reserved.
 //
-// Author: Chang-Hong Chen
-// Email: longhongc@gmail.com
+// @file nav_action_client.hpp
+// @brief An action client class for Nav2
+// @author: Chang-Hong Chen
+// @email: longhongc@gmail.com
 
 #ifndef ROBOT_MANAGER__NAV_ACTION_CLIENT_HPP_
 #define ROBOT_MANAGER__NAV_ACTION_CLIENT_HPP_

@@ -1,8 +1,10 @@
 // Copyright 2022, Chang-Hong Chen
 // All rights reserved.
 //
-// Author: Chang-Hong Chen
-// Email: longhongc@gmail.com
+// @file robot_manager.hpp
+// @brief A interface for controlling robot
+// @author: Chang-Hong Chen
+// @email: longhongc@gmail.com
 
 #ifndef ROBOT_MANAGER__ROBOT_MANAGER_HPP_
 #define ROBOT_MANAGER__ROBOT_MANAGER_HPP_

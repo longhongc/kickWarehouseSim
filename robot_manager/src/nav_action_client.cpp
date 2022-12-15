@@ -1,8 +1,10 @@
 // Copyright 2022, Chang-Hong Chen
 // All rights reserved.
 //
-// Author: Chang-Hong Chen
-// Email: longhongc@gmail.com
+// @file nav_action_client.cpp
+// @brief An action client class for Nav2
+// @author: Chang-Hong Chen
+// @email: longhongc@gmail.com
 
 #include <functional>
 #include <memory>

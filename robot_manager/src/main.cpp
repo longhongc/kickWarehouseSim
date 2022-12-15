@@ -1,8 +1,10 @@
 // Copyright 2022, Chang-Hong Chen
 // All rights reserved.
 //
-// Author: Chang-Hong Chen
-// Email: longhongc@gmail.com
+// @file main.cpp
+// @brief Main function of robot manager
+// @author: Chang-Hong Chen
+// @email: longhongc@gmail.com
 
 #include <memory>
 

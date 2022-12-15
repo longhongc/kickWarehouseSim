@@ -1,8 +1,10 @@
 // Copyright 2022, Chang-Hong Chen
 // All rights reserved.
 //
-// Author: Chang-Hong Chen
-// Email: longhongc@gmail.com
+// @file test_nav_action_cient.hpp
+// @brief Test for nav_action_client
+// @author: Chang-Hong Chen
+// @email: longhongc@gmail.com
 
 #include <memory>
 
