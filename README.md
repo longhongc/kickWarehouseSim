@@ -2,7 +2,10 @@
 [![Build Status](https://github.com/sj0897/kickWarehouseSim/actions/workflows/build_and_coveralls.yml/badge.svg)](https://github.com/sj0897/kickWarehouseSim/actions/workflows/build_and_coveralls.yml)
 [![Coverage Status](https://coveralls.io/repos/github/sj0897/kickWarehouseSim/badge.png?branch=master)]
 
-Direct testing of algorithms in the real world has huge costs and safety concerns associated with them. This is where simulation comes into picture. The agenda of this component is to create a software to automate simulation for evaluation of various algorithms that will be running on a wheeled robot.
+Robustness of the localization is an important component of a mobile robots software. Testing  small software changes can prove expensive if it needs to be tested in the real world as testing disrupts day to day activities of the facility as well poses a safety concern.
+
+To combat this issue, we have developed this package that generates simulation warehouses and automates testing of algorithms to benchmark algorithm  performance which can be utilized to ensure the software is stable enough to be tested in the real world, not only saving time and money, but also making the process safer.
+
 
 <p float="left">
   <img width="300" alt="warehouse_gazebo" src="images/warehouse_gazebo.png"> 
@@ -131,7 +134,7 @@ ros2 launch robot_manager test_robot_manager.launch.py
 ## Design
 ### UML
 
-<img width="627" alt="UML_Initial" src="UML/Revised/UML_Revised.png"> 
+<img width="627" alt="UML_Initial" src="UML/Revised/UML_Revised_V2.png"> 
 
 ### ROS Node Graph
 
