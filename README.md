@@ -5,7 +5,7 @@
 Direct testing of algorithms in the real world has huge costs and safety concerns associated with them. This is where simulation comes into picture. The agenda of this component is to create a software to automate simulation for evaluation of various algorithms that will be running on a wheeled robot.
 
 <p float="left">
-  <img width="350" alt="robot_model" src="images/robot_model.png"> 
+  <img width="340" alt="robot_model" src="images/robot_model.png"> 
   <img width="300" alt="warehouse_gazebo" src="images/warehouse_gazebo.png"> 
   <img width="320" alt="warehouse_rviz" src="images/rviz_show_waypoints.png"> 
 </p>
@@ -31,6 +31,7 @@ Direct testing of algorithms in the real world has huge costs and safety concern
 - ROS2 foxy
 - Ubuntu 20.04
 ### ROS2 Packages
+These packages are in the third_party folder
 - [Nav2](https://github.com/ros-planning/navigation2/tree/foxy-devel)
 - [slam_toolbox](https://github.com/SteveMacenski/slam_toolbox/tree/foxy-devel)
 
@@ -40,6 +41,19 @@ Clone this repository to the src folder in ros2 workspace
 cd {ros2 workspace}/src
 git clone https://github.com/sj0897/kickWarehouseSim.git
 ```
+The dependencies packages (Nav2 and slam toolbox) can be installed in two ways.
+1. Clone git submodule
+```
+cd {ros2 workspace}/src/kickWarehouseSim
+git submodule update --recursive
+```
+2. With apt-tool
+```
+sudo apt install ros-<distro>-slam-toolbox
+sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup '~ros-<distro>-turtlebot3-.*'
+```
+
+
 Build the packages
 ```
 cd {ros2 workspace}
@@ -87,3 +101,8 @@ Robot following a set of routine
 
 ### Link to AIP Documents
 https://docs.google.com/spreadsheets/d/1jPUXeID2PA99P3RgWnmy4Ot1bprAT-mLDxvRTo3mwnE/edit?usp=sharing
+
+
+## Known Issues
+- Global map got cleared if unreachable  
+https://github.com/ros-planning/navigation2/issues/1999
