@@ -36,7 +36,7 @@ jobs:
           required-ros-distributions: foxy
       - uses: ros-tooling/action-ros-ci@v0.2
         with:
-          package-name: warehouse_simulation
+          package-name: robot_manager
           target-ros2-distro: foxy
           skip-tests: true
       
