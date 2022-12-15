@@ -53,11 +53,9 @@ jobs:
       - name: Configure CMake flags and build exectables
         run: |
           source /opt/ros/foxy/setup.bash
-          sudo apt-get install python3-rosdep
-          sudo rosdep init
-          rosdep update
-          rosdep install -i --from-path src --rosdistro foxy -y
-          colcon build --packages-select warehouse_simulation
+          git submodule init
+          git submodule update
+          sudo apt install ros-foxy-gazebo-ros-pkgs
           colcon build --packages-select warehouse_simulation robot_manager
 
 # name: Build
