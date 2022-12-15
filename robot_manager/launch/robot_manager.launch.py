@@ -1,14 +1,10 @@
 import os
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.conditions import IfCondition, UnlessCondition
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import Command, LaunchConfiguration, PythonExpression
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-from ament_index_python import get_package_share_directory
-from launch.actions import TimerAction
 
 
 def generate_launch_description():
@@ -21,7 +17,7 @@ def generate_launch_description():
     config = LaunchConfiguration('config')
     use_sim_time = LaunchConfiguration('use_sim_time')
 
-    # Declare the launch arguments  
+    # Declare the launch arguments
     declare_namespace_cmd = DeclareLaunchArgument(
         name='namespace',
         default_value='',
@@ -44,7 +40,7 @@ def generate_launch_description():
         namespace=namespace,
         name='robot_manager',
         output='screen',
-        parameters=[config_path,
+        parameters=[config,
                     {'use_sim_time': use_sim_time}])
 
     # Create the launch description and populate
