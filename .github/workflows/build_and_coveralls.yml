@@ -54,7 +54,8 @@ jobs:
         run: |
           source /opt/ros/foxy/setup.bash
           sudo apt install ros-foxy-gazebo-ros-pkgs
-          colcon build --packages-select warehouse_simulation
+          sudo apt install ros-foxy-navigation2 ros-foxy-nav2-bringup '~ros-foxy-turtlebot3-.*'
+          colcon build --packages-select warehouse_simulation robot_manager
 
 # name: Build
 
