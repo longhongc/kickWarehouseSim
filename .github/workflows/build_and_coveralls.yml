@@ -53,9 +53,7 @@ jobs:
       - name: Configure CMake flags and build exectables
         run: |
           source /opt/ros/foxy/setup.bash
-          sudo rosdep init
-          rosdep update
-          rosdep install -i --from-path src --rosdistro foxy -y
+          sudo apt install ros-foxy-gazebo-ros-pkgs
           colcon build --packages-select warehouse_simulation
 
 # name: Build
