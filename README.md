@@ -101,3 +101,8 @@ Robot following a set of routine
 
 ### Link to AIP Documents
 https://docs.google.com/spreadsheets/d/1jPUXeID2PA99P3RgWnmy4Ot1bprAT-mLDxvRTo3mwnE/edit?usp=sharing
+
+
+## Known Issues
+- Global map got cleared if unreachable  
+https://github.com/ros-planning/navigation2/issues/1999
