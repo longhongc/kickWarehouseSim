@@ -17,14 +17,40 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(gazebo_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/Modify.srv"
+ )
+ ament_export_dependencies(rosidl_default_runtime)
+
+add_executable(spawn src/spawner.cpp)
+ament_target_dependencies(spawn rclcpp std_msgs gazebo_msgs)
+
+add_executable(trial src/trial.cpp)
+ament_target_dependencies(trial rclcpp std_msgs gazebo_msgs)
+
+rosidl_target_interfaces(trial
+  ${PROJECT_NAME} "rosidl_typesupport_cpp")
+
 install(
-  DIRECTORY models params launch worlds rviz
+  DIRECTORY models launch worlds rviz
   DESTINATION share/${PROJECT_NAME}
 )
+
+install(TARGETS
+  trial
+  spawn
+  DESTINATION lib/${PROJECT_NAME})
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
