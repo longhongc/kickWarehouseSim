@@ -5,7 +5,7 @@
 Direct testing of algorithms in the real world has huge costs and safety concerns associated with them. This is where simulation comes into picture. The agenda of this component is to create a software to automate simulation for evaluation of various algorithms that will be running on a wheeled robot.
 
 <p float="left">
-  <img width="350" alt="robot_model" src="images/robot_model.png"> 
+  <img width="340" alt="robot_model" src="images/robot_model.png"> 
   <img width="300" alt="warehouse_gazebo" src="images/warehouse_gazebo.png"> 
   <img width="320" alt="warehouse_rviz" src="images/rviz_show_waypoints.png"> 
 </p>
