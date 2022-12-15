@@ -31,6 +31,7 @@ Direct testing of algorithms in the real world has huge costs and safety concern
 - ROS2 foxy
 - Ubuntu 20.04
 ### ROS2 Packages
+These packages are in the third_party folder
 - [Nav2](https://github.com/ros-planning/navigation2/tree/foxy-devel)
 - [slam_toolbox](https://github.com/SteveMacenski/slam_toolbox/tree/foxy-devel)
 
@@ -40,6 +41,19 @@ Clone this repository to the src folder in ros2 workspace
 cd {ros2 workspace}/src
 git clone https://github.com/sj0897/kickWarehouseSim.git
 ```
+The dependencies packages (Nav2 and slam toolbox) can be installed in two ways.
+1. Clone git submodule
+```
+cd {ros2 workspace}/src/kickWarehouseSim
+git submodule update --recursive
+```
+2. With apt-tool
+```
+sudo apt install ros-<distro>-slam-toolbox
+sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup '~ros-<distro>-turtlebot3-.*'
+```
+
+
 Build the packages
 ```
 cd {ros2 workspace}
