@@ -26,30 +26,14 @@ find_package(geometry_msgs)
 find_package(visualization_msgs)
 find_package(robot_manager_msgs)
 
-# add_executable(nav_action_client 
-#   src/test_nav_action_client.cpp
-#   src/nav_action_client.cpp)
-#
-# target_include_directories(nav_action_client PUBLIC
-#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-#   $<INSTALL_INTERFACE:include>)
-#
-# ament_target_dependencies(nav_action_client
-#   nav2_msgs
-#   geometry_msgs
-#   rclcpp
-#   rclcpp_action)
+include_directories(
+  include)
 
-add_executable(robot_manager 
-  src/main.cpp
+add_library(robot_manager_lib
   src/robot_manager.cpp
   src/nav_action_client.cpp)
 
-target_include_directories(robot_manager PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
-
-ament_target_dependencies(robot_manager
+ament_target_dependencies(robot_manager_lib
   nav2_msgs
   geometry_msgs
   visualization_msgs
@@ -57,9 +41,23 @@ ament_target_dependencies(robot_manager
   rclcpp
   rclcpp_action)
 
+add_executable(robot_manager
+  src/main.cpp)
+
+target_link_libraries(robot_manager
+  robot_manager_lib)
+
+target_include_directories(robot_manager PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+
+
+
 install(TARGETS
   # nav_action_client
+  robot_manager_lib
   robot_manager
+  LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME})
@@ -73,11 +71,35 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
   # uncomment the line when a copyright and license is not present in all source files
-  #set(ament_cmake_copyright_FOUND TRUE)
+  set(ament_cmake_copyright_FOUND TRUE)
   # the following line skips cpplint (only works in a git repo)
   # uncomment the line when this package is not in a git repo
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
+
+  find_package(ament_cmake_gtest REQUIRED)
+
+  set(TESTFILES
+    test/main.cpp
+    test/test_robot_manager.cpp)
+
+  ament_add_gtest(${PROJECT_NAME}_test ${TESTFILES})
+
+  target_link_libraries(${PROJECT_NAME}_test
+    robot_manager_lib)
+
+  ament_target_dependencies(${PROJECT_NAME}_test
+    nav2_msgs
+    geometry_msgs
+    visualization_msgs
+    robot_manager_msgs
+    rclcpp
+    rclcpp_action)
+
+  install(
+    TARGETS ${PROJECT_NAME}_test
+    DESTINATION lib/${PROJECT_NAME})
+
 endif()
 
 ament_package()

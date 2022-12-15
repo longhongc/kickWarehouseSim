@@ -1,8 +1,10 @@
 // Copyright 2022, Chang-Hong Chen
 // All rights reserved.
 //
-// Author: Chang-Hong Chen
-// Email: longhongc@gmail.com
+// @file test_nav_action_cient.hpp
+// @brief Test for nav_action_client
+// @author: Chang-Hong Chen
+// @email: longhongc@gmail.com
 
 #include <memory>
 
@@ -29,22 +31,21 @@ int main(int argc, char ** argv)
 
   auto start = rclcpp::Clock(RCL_ROS_TIME).now();
   bool check = false;
-  while(rclcpp::ok() && success) {
-      // if (test_client->getResult()) {
-      //   RCLCPP_INFO_STREAM(
-      //   rclcpp::get_logger("rclcpp"),
-      //   "Test finish");
-      //   break;
-      // }
-      auto elapsed = rclcpp::Clock(RCL_ROS_TIME).now() - start;
-      if (elapsed.seconds() > 15 && check) {
-        success = test_client->sendGoal(waypoint2);
-        check = false;
-      }
-      rclcpp::spin_some(test_client);
+  while (rclcpp::ok() && success) {
+    // if (test_client->getResult()) {
+    //   RCLCPP_INFO_STREAM(
+    //   rclcpp::get_logger("rclcpp"),
+    //   "Test finish");
+    //   break;
+    // }
+    auto elapsed = rclcpp::Clock(RCL_ROS_TIME).now() - start;
+    if (elapsed.seconds() > 15 && check) {
+      success = test_client->sendGoal(waypoint2);
+      check = false;
+    }
+    rclcpp::spin_some(test_client);
   }
 
   rclcpp::shutdown();
   return 0;
 }
-
