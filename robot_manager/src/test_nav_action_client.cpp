@@ -29,22 +29,21 @@ int main(int argc, char ** argv)
 
   auto start = rclcpp::Clock(RCL_ROS_TIME).now();
   bool check = false;
-  while(rclcpp::ok() && success) {
-      // if (test_client->getResult()) {
-      //   RCLCPP_INFO_STREAM(
-      //   rclcpp::get_logger("rclcpp"),
-      //   "Test finish");
-      //   break;
-      // }
-      auto elapsed = rclcpp::Clock(RCL_ROS_TIME).now() - start;
-      if (elapsed.seconds() > 15 && check) {
-        success = test_client->sendGoal(waypoint2);
-        check = false;
-      }
-      rclcpp::spin_some(test_client);
+  while (rclcpp::ok() && success) {
+    // if (test_client->getResult()) {
+    //   RCLCPP_INFO_STREAM(
+    //   rclcpp::get_logger("rclcpp"),
+    //   "Test finish");
+    //   break;
+    // }
+    auto elapsed = rclcpp::Clock(RCL_ROS_TIME).now() - start;
+    if (elapsed.seconds() > 15 && check) {
+      success = test_client->sendGoal(waypoint2);
+      check = false;
+    }
+    rclcpp::spin_some(test_client);
   }
 
   rclcpp::shutdown();
   return 0;
 }
-

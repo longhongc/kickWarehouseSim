@@ -10,8 +10,8 @@
 #include <memory>
 #include <map>
 #include <queue>
-#include <vector>
 #include <string>
+#include <vector>
 
 #include "geometry_msgs/msg/pose.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
@@ -71,5 +71,4 @@ private:
   rclcpp::Duration NAVIGATION_TIMEOUT{20s};
 };
 
-#endif // ROBOT_MANAGER__ROBOT_MANAGER_HPP_
-
+#endif  // ROBOT_MANAGER__ROBOT_MANAGER_HPP_

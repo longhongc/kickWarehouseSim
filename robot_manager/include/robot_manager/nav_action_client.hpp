@@ -16,9 +16,10 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
-using namespace std::chrono_literals;
+using std::chrono_literals::operator""s;
+using std::chrono_literals::operator""ms;
 
-using NavToPoseAction = nav2_msgs::action::NavigateToPose; 
+using NavToPoseAction = nav2_msgs::action::NavigateToPose;
 using GoalHandleNavToPose = rclcpp_action::ClientGoalHandle<NavToPoseAction>;
 
 enum class ClientState;
@@ -26,31 +27,32 @@ enum class ClientState;
 class NavActionClient
 {
 public:
-    NavActionClient(std::shared_ptr<rclcpp::Node> node);
-    ~NavActionClient();
-    bool initialize();
-    void reset();
-    bool sendGoal(geometry_msgs::msg::PoseStamped & waypoint);
-    bool onTask();
-    bool getResult();
+  explicit NavActionClient(std::shared_ptr<rclcpp::Node> node);
+  ~NavActionClient();
+  bool initialize();
+  void reset();
+  bool sendGoal(geometry_msgs::msg::PoseStamped & waypoint);
+  bool onTask();
+  bool getResult();
 
 private:
-    void goalResponseCallback(std::shared_future<GoalHandleNavToPose::SharedPtr> future);
-    void feedbackCallback(
-        GoalHandleNavToPose::SharedPtr,
-        const std::shared_ptr<const NavToPoseAction::Feedback> feedback);
-    void resultCallback(const GoalHandleNavToPose::WrappedResult & result);
+  void goalResponseCallback(std::shared_future<GoalHandleNavToPose::SharedPtr> future);
+  void feedbackCallback(
+    GoalHandleNavToPose::SharedPtr,
+    const std::shared_ptr<const NavToPoseAction::Feedback> feedback);
+  void resultCallback(const GoalHandleNavToPose::WrappedResult & result);
 
-    std::shared_ptr<rclcpp::Node> node_;
+  std::shared_ptr<rclcpp::Node> node_;
 
-    ClientState client_state_;
+  ClientState client_state_;
 
-    rclcpp_action::Client<NavToPoseAction>::SharedPtr client_ptr_;
-    
-    geometry_msgs::msg::PoseStamped current_pose_;
-    geometry_msgs::msg::PoseStamped goal_pose_;
-    rclcpp::Duration navigation_time_{0s};
-    // Todo: pass in navigation timeout
-    rclcpp::Duration NAVIGATION_TIMEOUT{300s};
+  rclcpp_action::Client<NavToPoseAction>::SharedPtr client_ptr_;
+
+  geometry_msgs::msg::PoseStamped current_pose_;
+  geometry_msgs::msg::PoseStamped goal_pose_;
+  rclcpp::Duration navigation_time_{0s};
+
+  // Todo: pass in navigation timeout
+  rclcpp::Duration NAVIGATION_TIMEOUT{300s};
 };
-#endif // ROBOT_MANAGER__NAV_ACTION_CLIENT_HPP_
+#endif  // ROBOT_MANAGER__NAV_ACTION_CLIENT_HPP_

@@ -5,17 +5,23 @@
 // Email: longhongc@gmail.com
 
 
-#include <rcl_interfaces/msg/detail/parameter_descriptor__struct.hpp>
+#include <vector>
+#include <string>
+#include <memory>
+#include <queue>
+#include <utility>
+
+#include "rcl_interfaces/msg/detail/parameter_descriptor__struct.hpp"
 
 #include "robot_manager/robot_manager.hpp"
 
-enum class RobotManagerState{INIT, IDLE, ON_ROUTINE, FINISH};
-enum class WaypointState{DEFAULT, FAIL, COMPLETE};
+enum class RobotManagerState {INIT, IDLE, ON_ROUTINE, FINISH};
+enum class WaypointState {DEFAULT, FAIL, COMPLETE};
 
 using namespace std::placeholders;
 
 RobotManager::RobotManager()
-: Node("robot_manager"), 
+: Node("robot_manager"),
   robot_manager_state_{RobotManagerState::INIT}
 {
   this->initialize();
@@ -24,10 +30,10 @@ RobotManager::RobotManager()
 void RobotManager::initialize()
 {
   nav_to_pose_client_ = nullptr;
-  waypoints_marker_pub_ = 
+  waypoints_marker_pub_ =
     this->create_publisher<visualization_msgs::msg::MarkerArray>(
-        "waypoints_marker", 
-        10);
+    "waypoints_marker",
+    10);
 
   waypoints_marker_timer_ =
     this->create_wall_timer(
@@ -41,7 +47,7 @@ void RobotManager::initialize()
     std::bind(&RobotManager::setRoutineCallback, this, _1, _2));
 
 
-  // Set ros parameter 
+  // Set ros parameter
   // Parameter: origin
   auto origin_param_desc =
     rcl_interfaces::msg::ParameterDescriptor{};
@@ -53,7 +59,7 @@ void RobotManager::initialize()
   std::vector<double> origin_vec{0, 0, 0, 0, 0, 0, 0};
   this->declare_parameter("origin", origin_vec, origin_param_desc);
 
-  origin_vec = 
+  origin_vec =
     this->get_parameter("origin").as_double_array();
 
   origin_ = geometry_msgs::msg::Pose();
@@ -65,9 +71,10 @@ void RobotManager::initialize()
   origin_.orientation.z = origin_vec.at(5);
   origin_.orientation.w = origin_vec.at(6);
 
-  RCLCPP_INFO_STREAM(this->get_logger(), 
-      "Robot origin: [x: " << origin_.position.x <<
-      ", y: " << origin_.position.y << 
+  RCLCPP_INFO_STREAM(
+    this->get_logger(),
+    "Robot origin: [x: " << origin_.position.x <<
+      ", y: " << origin_.position.y <<
       ", z: " << origin_.position.z << "]");
 
   // Parameter: waypoints_name
@@ -79,18 +86,19 @@ void RobotManager::initialize()
 
   this->declare_parameter("waypoints_name", waypoints_name_, waypoints_name_desc);
 
-  waypoints_name_ = 
+  waypoints_name_ =
     this->get_parameter("waypoints_name").as_string_array();
 
-  RCLCPP_INFO_STREAM(this->get_logger(), 
-      "Loading waypoints ...");
+  RCLCPP_INFO_STREAM(
+    this->get_logger(),
+    "Loading waypoints ...");
 
   auto waypoints_desc =
     rcl_interfaces::msg::ParameterDescriptor{};
 
-  
+
   // Parameters: waypoints
-  for (int i=0; i < int(waypoints_name_.size()); ++i) {
+  for (int i = 0; i < static_cast<int>(waypoints_name_.size()); ++i) {
     std::string name = waypoints_name_[i];
 
     std::vector<double> pose_vec{0, 0, 0, 0, 0, 0, 0};
@@ -99,8 +107,8 @@ void RobotManager::initialize()
       "\nThis parameter is the pose of waypoint " + name + ".";
 
     this->declare_parameter("waypoints." + name, pose_vec, waypoints_desc);
-    pose_vec = 
-      this->get_parameter("waypoints." + name).as_double_array(); 
+    pose_vec =
+      this->get_parameter("waypoints." + name).as_double_array();
 
     auto waypoint_pose = geometry_msgs::msg::Pose();
     waypoint_pose.position.x = pose_vec.at(0);
@@ -111,8 +119,9 @@ void RobotManager::initialize()
     waypoint_pose.orientation.z = pose_vec.at(5);
     waypoint_pose.orientation.w = pose_vec.at(6);
 
-    RCLCPP_INFO_STREAM(this->get_logger(), 
-        "Waypoint " << name << ": [" <<
+    RCLCPP_INFO_STREAM(
+      this->get_logger(),
+      "Waypoint " << name << ": [" <<
         "x: " << waypoint_pose.position.x <<
         ", y: " << waypoint_pose.position.y <<
         ", z: " << waypoint_pose.position.z << "]");
@@ -140,13 +149,14 @@ void RobotManager::controlCycleCallback()
     nav_to_pose_client_ = std::make_shared<NavActionClient>(this->shared_from_this());
   }
 
-  switch(robot_manager_state_) {
+  switch (robot_manager_state_) {
     case RobotManagerState::INIT:
       this->initialize();
       return;
 
     case RobotManagerState::IDLE:
-      RCLCPP_INFO_STREAM_ONCE(this->get_logger(),
+      RCLCPP_INFO_STREAM_ONCE(
+        this->get_logger(),
         "Waiting for routine ...");
       break;
 
@@ -175,17 +185,19 @@ void RobotManager::runRoutine()
   if (have_result) {
     auto current_waypoint_pose = waypoint_name_to_pose_[current_waypoint_];
 
-    RCLCPP_INFO_STREAM(this->get_logger(),
+    RCLCPP_INFO_STREAM(
+      this->get_logger(),
       "Finished waypoint: " <<
-      "[x: " << current_waypoint_pose.pose.position.x <<
-      ", y: " << current_waypoint_pose.pose.position.y << "]");
+        "[x: " << current_waypoint_pose.pose.position.x <<
+        ", y: " << current_waypoint_pose.pose.position.y << "]");
 
     // Todo: Analyze result
     waypoints_state_[current_waypoint_] = WaypointState::COMPLETE;
 
     // Finish routine
     if (this->current_queue_.empty()) {
-      RCLCPP_INFO(this->get_logger(),
+      RCLCPP_INFO(
+        this->get_logger(),
         "Finished routine");
 
       robot_manager_state_ = RobotManagerState::FINISH;
@@ -202,20 +214,20 @@ bool RobotManager::runWaypoint()
   this->nav_to_pose_client_->reset();
   auto next_waypoint = current_queue_.front();
   auto next_waypoint_pose = waypoint_name_to_pose_[next_waypoint];
-  bool send_goal_success = 
+  bool send_goal_success =
     nav_to_pose_client_->sendGoal(next_waypoint_pose);
 
   if (send_goal_success) {
     this->current_waypoint_ = next_waypoint;
     this->current_queue_.pop();
   }
-  
+
   return send_goal_success;
 }
 
 void RobotManager::reset()
 {
-  for (auto& [_, state] : waypoints_state_) {
+  for (auto & [_, state] : waypoints_state_) {
     state = WaypointState::DEFAULT;
   }
 
@@ -232,7 +244,7 @@ void RobotManager::waypointsMarkerCallback()
   auto marker = visualization_msgs::msg::Marker();
   marker.header.frame_id = "map";
   marker.header.stamp = this->now();
-  marker.ns = "robot_manager"; 
+  marker.ns = "robot_manager";
   marker.type = visualization_msgs::msg::Marker::CUBE;
   marker.action = visualization_msgs::msg::Marker::ADD;
   marker.color.a = 0.7;
@@ -242,11 +254,11 @@ void RobotManager::waypointsMarkerCallback()
 
   auto marker_array = visualization_msgs::msg::MarkerArray();
 
-  for (auto& [name, state] : waypoints_state_) {
-    marker.id = waypoint_name_to_index_[name]; 
+  for (auto & [name, state] : waypoints_state_) {
+    marker.id = waypoint_name_to_index_[name];
     marker.pose = waypoint_name_to_pose_[name].pose;
 
-    switch(state) {
+    switch (state) {
       case WaypointState::DEFAULT:
         marker.color.r = 1.5;
         marker.color.g = 1.0;
@@ -280,18 +292,36 @@ void RobotManager::setRoutineCallback(
   this->reset();
   routine_by_name_ = request->routine;
 
+  if (routine_by_name_.empty()) {
+    response->success = false;
+    response->msg = "Routine is empty";
+    return;
+  }
+
   std::string routine_sequence = "O ";
 
   // Create routine
-  for (auto & name: routine_by_name_) {
+  for (auto & name : routine_by_name_) {
     routine_sequence += "-> ";
     routine_sequence += name;
+    if (waypoint_name_to_pose_.find(name) ==
+      waypoint_name_to_pose_.end())
+    {
+      response->success = false;
+      response->msg = "Waypoint " + name + " is not set";
+      RCLCPP_ERROR_STREAM(
+        this->get_logger(),
+        "Rceived invalid routine. " <<
+          "Waypoint " << name << " is not set");
+      return;
+    }
     routine_by_pose_.push_back(waypoint_name_to_pose_[name]);
     current_queue_.push(name);
   }
 
-  RCLCPP_INFO_STREAM(this->get_logger(),
-      "Recevied routine " << routine_sequence);
+  RCLCPP_INFO_STREAM(
+    this->get_logger(),
+    "Recevied routine " << routine_sequence);
 
   robot_manager_state_ = RobotManagerState::ON_ROUTINE;
   response->success = true;
