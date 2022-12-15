@@ -49,8 +49,10 @@ git submodule update --recursive
 ```
 2. With apt-tool
 ```
+sudo apt install ros-foxy-gazebo-ros-pkgs
 sudo apt install ros-<distro>-slam-toolbox
 sudo apt install ros-<distro>-navigation2 ros-<distro>-nav2-bringup '~ros-<distro>-turtlebot3-.*'
+
 ```
 
 
@@ -86,9 +88,26 @@ ros2 service call /set_routine robot_manager_msgs/srv/SetRoutine "{routine: [A, 
 Routine config example  
 <img width="300" alt="routine_config" src="images/parameter_configs.png"> 
 
+## Warehouse Simulation
+
+```
+ros2 launch warehouse_simulation e^Cty_warehouse.launch.py
+ros2 run warehouse_simulation warehouse
+ros2 service call /warehouse/Generate warehouse_simulation/srv/Modify "{a: 1}"
+ros2 service call /warehouse/Modify warehouse_simulation/srv/Modify "{a: 5}"
+
+
+```
+
+
+
+
 ## Results
 Robot following a set of routine  
 <img width="627" alt="routine_rviz" src="images/routine_rviz_speedup.gif"> 
+
+World Generation and Modification 
+<img width="627" alt="routine_rviz" src="images/warehouse.gif"> 
 
 ## Design
 ### UML

@@ -32,13 +32,12 @@ rosidl_generate_interfaces(${PROJECT_NAME}
  )
  ament_export_dependencies(rosidl_default_runtime)
 
-add_executable(spawn src/spawner.cpp)
-ament_target_dependencies(spawn rclcpp std_msgs gazebo_msgs)
 
-add_executable(trial src/trial.cpp)
-ament_target_dependencies(trial rclcpp std_msgs gazebo_msgs)
 
-rosidl_target_interfaces(trial
+add_executable(warehouse src/warehouse.cpp)
+ament_target_dependencies(warehouse rclcpp std_msgs gazebo_msgs)
+
+rosidl_target_interfaces(warehouse
   ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 install(
@@ -47,8 +46,7 @@ install(
 )
 
 install(TARGETS
-  trial
-  spawn
+  warehouse
   DESTINATION lib/${PROJECT_NAME})
 
 
