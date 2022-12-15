@@ -13,7 +13,6 @@
 
 using namespace std::placeholders;
 
-enum class ClientState {UNSET, READY, ON_TASK, PREEMPT, FINISH};
 
 NavActionClient::NavActionClient(std::shared_ptr<rclcpp::Node> node)
 : node_(node),
@@ -147,6 +146,12 @@ bool NavActionClient::getResult()
   }
 
   return false;
+}
+
+ClientState NavActionClient::setState(ClientState new_state)
+{
+  this->client_state_ = new_state;
+  return this->client_state_;
 }
 
 void NavActionClient::goalResponseCallback(

@@ -27,7 +27,7 @@ using GoalHandleNavToPose = rclcpp_action::ClientGoalHandle<NavToPoseAction>;
 /**
  * @Brief  The internal state of the NavActionClient class
  */
-enum class ClientState;
+enum class ClientState {UNSET, READY, ON_TASK, PREEMPT, FINISH};
 
 /**
  * @Brief  A client interface for sending action to Nav2
@@ -86,6 +86,15 @@ public:
    * @Returns  True if NavActionClient has finished the prevous command
    */
   bool getResult();
+
+  /**
+   * @Brief  Set client state for testing purpose
+   *
+   * @Param new_state The state for testing
+   *
+   * @Returns  The change state
+   */
+  ClientState setState(ClientState new_state);
 
 private:
   /**
