@@ -110,7 +110,7 @@ World Generation and Modification
 ## Design
 ### UML
 
-<img width="627" alt="UML_Initial" src="UML/Initial/UML_Revised.png"> 
+<img width="627" alt="UML_Initial" src="UML/Revised/UML_Revised.png"> 
 
 ### ROS Node Graph
 
