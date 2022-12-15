@@ -29,6 +29,17 @@ find_package(robot_manager_msgs)
 include_directories(
   include)
 
+add_library(nav_action_client_lib
+  src/nav_action_client.cpp)
+
+ament_target_dependencies(nav_action_client_lib
+  nav2_msgs
+  geometry_msgs
+  visualization_msgs
+  robot_manager_msgs
+  rclcpp
+  rclcpp_action)
+
 add_library(robot_manager_lib
   src/robot_manager.cpp
   src/nav_action_client.cpp)
@@ -55,6 +66,7 @@ target_include_directories(robot_manager PUBLIC
 
 install(TARGETS
   # nav_action_client
+  nav_action_client_lib
   robot_manager_lib
   robot_manager
   LIBRARY DESTINATION lib
@@ -81,7 +93,8 @@ if(BUILD_TESTING)
 
   set(TESTFILES
     test/main.cpp
-    test/test_robot_manager.cpp)
+    test/test_robot_manager.cpp
+    test/test_nav_action_client.cpp)
 
   ament_add_gtest(${PROJECT_NAME}_test ${TESTFILES})
 

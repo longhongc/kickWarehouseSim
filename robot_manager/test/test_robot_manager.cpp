@@ -9,7 +9,7 @@
 
 #include "robot_manager/robot_manager.hpp"
 
-TEST(DummyTests, dummy1)
+TEST(DummyTests, dummyRobotManager)
 {
   EXPECT_TRUE(true);
 }

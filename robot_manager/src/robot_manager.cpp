@@ -17,8 +17,6 @@
 
 #include "robot_manager/robot_manager.hpp"
 
-enum class RobotManagerState {INIT, IDLE, ON_ROUTINE, FINISH};
-enum class WaypointState {DEFAULT, FAIL, COMPLETE};
 
 using namespace std::placeholders;
 

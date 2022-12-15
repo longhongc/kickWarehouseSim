@@ -24,18 +24,19 @@
 #include "robot_manager/nav_action_client.hpp"
 #include "robot_manager_msgs/srv/set_routine.hpp"
 
+using SetRoutine = robot_manager_msgs::srv::SetRoutine;
+
 /**
  * @Brief  The internal state of RobotManager class
  */
-enum class RobotManagerState;
+enum class RobotManagerState {INIT, IDLE, ON_ROUTINE, FINISH};
 
 /**
  * @Brief  The state of a waypoint
  *
  */
-enum class WaypointState;
+enum class WaypointState {DEFAULT, FAIL, COMPLETE};
 
-using SetRoutine = robot_manager_msgs::srv::SetRoutine;
 
 /**
  * @Brief  A interface to control and interact with the robot
